@@ -4,12 +4,22 @@ import { useState } from "react";
 import Link from "next/link";
 import { Crest } from "@/components/crest";
 
-const steps = ["Personal Details", "Passport & QID", "Address & Emergency", "Family Information"];
+const steps = [
+  "Personal Details",
+  "Passport & QID",
+  "Address & Emergency",
+  "Family Information",
+  "Declaration & Signature",
+];
 
 export default function RegisterPage() {
   const [step, setStep] = useState(2);
   const [saved, setSaved] = useState("Last saved 10:42 AM");
   const [done, setDone] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+  const [signature, setSignature] = useState("Mariama Fatou Jallow");
+  const lastStep = steps.length - 1;
+  const canSubmit = accepted && signature.trim().length > 0;
 
   return (
     <div className="min-h-screen bg-[#f7f6f2]">
@@ -109,9 +119,12 @@ export default function RegisterPage() {
               </ol>
               <p className="mt-6 text-xs text-muted">COMPLETION</p>
               <div className="mt-2 h-1.5 rounded-full bg-stone-100">
-                <div className="h-full rounded-full bg-emerald-700" style={{ width: `${(step + 1) * 25}%` }} />
+                <div
+                  className="h-full rounded-full bg-emerald-700"
+                  style={{ width: `${((step + 1) / steps.length) * 100}%` }}
+                />
               </div>
-              <p className="mt-1 text-right text-xs">{(step + 1) * 25}%</p>
+              <p className="mt-1 text-right text-xs">{Math.round(((step + 1) / steps.length) * 100)}%</p>
               <div className="mt-4 rounded-2xl bg-emerald-50 p-3 text-xs text-emerald-950">
                 Protected information. Your data is encrypted and used only for official consular
                 purposes.
@@ -120,12 +133,20 @@ export default function RegisterPage() {
 
             <section className="rounded-3xl bg-white p-6 sm:p-8">
               <p className="text-xs font-semibold tracking-[0.14em] text-emerald-800">
-                STEP {step + 1} OF 4
+                STEP {step + 1} OF {steps.length}
               </p>
               {step === 0 && <PersonalStep />}
               {step === 1 && <PassportStep />}
               {step === 2 && <AddressStep />}
               {step === 3 && <FamilyStep />}
+              {step === 4 && (
+                <DeclarationStep
+                  accepted={accepted}
+                  signature={signature}
+                  onAccepted={setAccepted}
+                  onSignature={setSignature}
+                />
+              )}
               <div className="mt-8 flex items-center justify-between">
                 <button
                   type="button"
@@ -143,7 +164,7 @@ export default function RegisterPage() {
                   >
                     Save Progress
                   </button>
-                  {step < 3 ? (
+                  {step < lastStep ? (
                     <button
                       type="button"
                       onClick={() => setStep((value) => value + 1)}
@@ -154,8 +175,9 @@ export default function RegisterPage() {
                   ) : (
                     <button
                       type="button"
+                      disabled={!canSubmit}
                       onClick={() => setDone(true)}
-                      className="rounded-full bg-embassy px-4 py-2 text-sm text-white"
+                      className="rounded-full bg-embassy px-4 py-2 text-sm text-white disabled:opacity-40"
                     >
                       Submit Registration
                     </button>
@@ -168,17 +190,18 @@ export default function RegisterPage() {
               <Summary title="Personal Details" done={step > 0} lines={["Mariama Fatou Jallow", "14 May 1992 · Banjul", "Female", "Gambian"]} />
               <Summary title="Passport & QID" done={step > 1} lines={["PC081924 · 08 Nov 2028", "QID 29245001783", "17 Feb 2027"]} />
               <div className="rounded-3xl bg-[#f3f1ea] p-5 text-sm">
-                <p className="text-xs text-muted">Next: {steps[Math.min(step + 1, 3)]}</p>
-                <p className="mt-2 font-medium">STEP {Math.min(step + 2, 4)}</p>
+                <p className="text-xs text-muted">Next: {steps[Math.min(step + 1, lastStep)]}</p>
+                <p className="mt-2 font-medium">STEP {Math.min(step + 2, steps.length)}</p>
                 <p className="mt-3 text-muted">
-                  You will review all information and use Submit Registration after completing the
-                  last step.
+                  The last step is a declaration of the conditions and terms, signed with your full
+                  name.
                 </p>
-                {step === 3 && (
+                {step === lastStep && (
                   <button
                     type="button"
+                    disabled={!canSubmit}
                     onClick={() => setDone(true)}
-                    className="mt-4 w-full rounded-full bg-embassy py-3 text-sm font-semibold text-white"
+                    className="mt-4 w-full rounded-full bg-embassy py-3 text-sm font-semibold text-white disabled:opacity-40"
                   >
                     Submit Registration
                   </button>
@@ -270,6 +293,51 @@ function AddressStep() {
         <Field label="Phone number *" value="+220 397 0284" />
         <Field label="City / region *" value="Serrekunda, Kanifing" />
       </div>
+    </>
+  );
+}
+
+function DeclarationStep({
+  accepted,
+  signature,
+  onAccepted,
+  onSignature,
+}: {
+  accepted: boolean;
+  signature: string;
+  onAccepted: (value: boolean) => void;
+  onSignature: (value: string) => void;
+}) {
+  return (
+    <>
+      <h2 className="mt-2 text-2xl font-semibold">Declaration & signature</h2>
+      <p className="mt-2 text-sm text-muted">
+        Read the conditions and terms, accept them, and sign with your full name.
+      </p>
+      <div className="mt-5 rounded-2xl bg-[#f3f1ea] p-4 text-sm leading-6 text-ink/80">
+        I declare that the information in this registration is true. I accept the Embassy conditions
+        and terms for consular services in Qatar, including the use of my details for official
+        contact, emergency assistance, and document processing.
+      </div>
+      <label className="mt-4 flex items-start gap-3 text-sm">
+        <input
+          type="checkbox"
+          checked={accepted}
+          onChange={(event) => onAccepted(event.target.checked)}
+          className="mt-1"
+        />
+        <span>I declare that I accept the conditions and terms.</span>
+      </label>
+      <label className="mt-6 block text-sm">
+        <span className="font-medium">Signature</span>
+        <span className="mt-1 block text-xs text-muted">Type your full name as your signature.</span>
+        <input
+          value={signature}
+          onChange={(event) => onSignature(event.target.value)}
+          className="mt-2 w-full border-b border-black/20 bg-transparent px-1 py-3 font-serif text-2xl outline-none"
+          placeholder="Full name"
+        />
+      </label>
     </>
   );
 }

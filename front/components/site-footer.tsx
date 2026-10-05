@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Crest } from "@/components/crest";
 
-export function SiteFooter() {
+export function SiteFooter({ className = "" }: { className?: string }) {
   return (
-    <footer className="bg-embassy-deep text-white">
+    <footer className={`overflow-hidden bg-embassy-deep text-white ${className}`}>
       <div className="bg-[#0e5c48]">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
               Are you a Gambian citizen living in Qatar?
@@ -24,7 +24,7 @@ export function SiteFooter() {
           </Link>
         </div>
       </div>
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-5">
+      <div className="mx-auto grid min-h-0 flex-1 max-w-7xl gap-6 overflow-hidden px-4 py-6 sm:px-6 md:grid-cols-5">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
             <Crest className="h-9 w-9" />

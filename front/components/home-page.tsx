@@ -5,6 +5,8 @@ import { SiteHeader } from "@/components/site-header";
 import { AboutTabs } from "@/components/about-tabs";
 import { EmbassyCard } from "@/components/embassy-card";
 import { HighlightReel } from "@/components/highlight-reel";
+import { NewsReel } from "@/components/news-reel";
+import { serviceSlug } from "@/lib/service-links";
 
 const staff = [
   "Consular Officer",
@@ -70,10 +72,10 @@ const news = [
 
 export function HomePage() {
   return (
-    <>
+    <div className="home-snap">
       <SiteHeader />
       <main>
-        <section className="hero-stripes relative flex h-[calc(100dvh-6rem)] flex-col overflow-hidden text-white">
+        <section className="home-panel hero-stripes relative flex flex-col text-white">
           <div
             className="pointer-events-none absolute -top-[121px] -right-[110px] h-[452px] w-[452px] rounded-full border border-[#c9b896]/80"
             aria-hidden
@@ -135,90 +137,91 @@ export function HomePage() {
           <HighlightReel />
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-          <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
-            AMBASSADOR&apos;S MESSAGE
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink">
-            A warm welcome from the Ambassador
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Meet the Ambassador and learn more about the Embassy&apos;s commitment to Gambian
-            citizens and partners in Qatar.
-          </p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
-            <div className="flex items-center justify-center rounded-3xl border border-black/5 bg-white p-8">
-              <span className="flex h-44 w-44 items-center justify-center rounded-full bg-stone-200 text-stone-700">
-                <PersonIcon className="h-24 w-24" />
-              </span>
-            </div>
-            <article className="rounded-3xl border border-black/5 bg-white p-8">
-              <div className="flex items-start justify-between">
-                <h3 className="text-xl font-semibold">Ambassador&apos;s Welcome</h3>
-                <BuildingIcon />
-              </div>
-              <p className="mt-4 text-sm leading-7 text-muted">
-                “As Ambassador, I invite you to see this Embassy as a home away from home. We are
-                here to support Gambian citizens in Qatar, strengthen bilateral ties with the State
-                of Qatar, and make consular services clear, accessible and respectful for every
-                visitor.”
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-100">
-                  <PersonIcon />
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold">Full Name</span>
-                  <span className="block text-xs text-muted">
-                    Ambassador of The Gambia to the State of Qatar
-                  </span>
-                </span>
-              </div>
-            </article>
-          </div>
-
-          <div className="mt-14 flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold">Embassy Staff</h2>
-            <p className="hidden text-sm text-muted sm:block">
-              Meet the team supporting citizens and partners
+        <section className="home-panel bg-[#f6f5f2]">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col justify-center px-4 py-6 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
+              AMBASSADOR&apos;S MESSAGE
             </p>
-          </div>
-          <div className="mt-6 flex gap-4 overflow-x-auto pb-2">
-            {staff.map((role, index) => (
-              <article key={`${role}-${index}`} className="w-44 shrink-0 rounded-2xl border border-black/5 bg-white px-4 py-5 text-center">
-                <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-stone-200">
-                  <PersonIcon />
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink">
+              A warm welcome from the Ambassador
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-muted">
+              A message for Gambian citizens and partners in Qatar, and the team that delivers it.
+            </p>
+            <div className="mt-6 grid items-stretch gap-5 sm:grid-cols-[168px_1fr]">
+              <div className="flex h-full min-h-40 items-center justify-center rounded-3xl border border-black/5 bg-white">
+                <span className="flex h-28 w-28 items-center justify-center rounded-full bg-stone-200 text-stone-700">
+                  <PersonIcon className="h-16 w-16" />
                 </span>
-                <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
-                <p className="text-xs text-muted">{role}</p>
+              </div>
+              <article className="rounded-3xl border border-black/5 bg-white px-6 py-5">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-semibold">Ambassador&apos;s Welcome</h3>
+                  <BuildingIcon />
+                </div>
+                <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
+                  “This Embassy is a home away from home. We support Gambian citizens in Qatar,
+                  strengthen ties with the State of Qatar, and keep consular services clear and
+                  respectful for every visitor.”
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-100">
+                    <PersonIcon />
+                  </span>
+                  <span>
+                    <span className="block text-sm font-semibold">Full Name</span>
+                    <span className="block text-xs text-muted">
+                      Ambassador of The Gambia to the State of Qatar
+                    </span>
+                  </span>
+                </div>
               </article>
-            ))}
+            </div>
+            <div className="mt-6 flex items-end justify-between gap-4">
+              <h2 className="text-xl font-semibold">Embassy Staff</h2>
+              <p className="hidden text-sm text-muted sm:block">The people serving citizens and partners</p>
+            </div>
+            <div className="mt-3 grid grid-cols-5 gap-3">
+              {staff.map((role, index) => (
+                <article
+                  key={`${role}-${index}`}
+                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-4 text-center text-ink"
+                >
+                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-stone-200">
+                    <PersonIcon />
+                  </span>
+                  <h3 className="mt-3 text-sm font-semibold">Full Name</h3>
+                  <p className="text-xs leading-5 text-muted">{role}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         <NewsSection />
 
-        <section id="about" className="bg-[#f6f5f2] text-ink">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
-              OUR SHARED MISSION
+              THE NATION AND THE EMBASSY
             </p>
             <h2 className="mt-2 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              Bringing The Gambia closer to its citizens and partners
+              Know The Gambia, and the Embassy that serves it in Qatar
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted">
-              Explore our nation, understand the Embassy&apos;s mandate and connect directly with
-              the people serving the Gambian community in Qatar.
+              History, geography and government of the country, beside the vision, values and
+              mission of this Embassy: a trusted presence that keeps Gambians connected to home and
+              strengthens ties with the State of Qatar.
             </p>
-            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="mt-6 grid min-h-0 flex-1 gap-6 overflow-hidden sm:grid-cols-2">
               <AboutTabs />
               <EmbassyCard />
             </div>
           </div>
         </section>
 
-        <section id="services" className="bg-embassy-hero text-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <section id="services" className="home-panel section-gradient text-white">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
           <p className="text-center text-xs font-semibold tracking-[0.16em] text-emerald-200">
             CONSULAR SERVICES
           </p>
@@ -229,17 +232,21 @@ export function HomePage() {
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
-          <div className="mt-10 flex gap-4 overflow-x-auto pb-2">
+          <div className="mx-auto mt-6 grid w-full max-w-6xl grid-cols-4 gap-3">
             {services.map((service) => (
-              <article key={service.title} className="w-72 shrink-0 rounded-3xl border border-black/5 bg-white p-6 sm:w-80">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-embassy-soft text-embassy">
+              <article key={service.title} className="min-w-0 rounded-2xl border border-black/5 bg-white p-4 text-ink">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
                   <BuildingIcon />
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{service.body}</p>
-                <ul className="mt-4 space-y-2 text-sm text-embassy">
+                <h3 className="mt-3 text-sm font-semibold leading-snug">{service.title}</h3>
+                <p className="mt-2 text-xs leading-5 text-muted">{service.body}</p>
+                <ul className="mt-3 space-y-1 text-xs text-embassy">
                   {service.items.map((item) => (
-                    <li key={item}>→ {item}</li>
+                    <li key={item}>
+                      <Link href={`/services/${serviceSlug(item)}`} className="hover:underline">
+                        → {item}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </article>
@@ -251,7 +258,7 @@ export function HomePage() {
             </p>
             <a
               href="#location"
-              className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium"
+              className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-ink"
             >
               Contact Consular Desk
             </a>
@@ -259,8 +266,8 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="discover" className="bg-[#f6f5f2] text-ink">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <section id="discover" className="home-panel bg-[#f6f5f2] text-ink">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               DISCOVER THE GAMBIA
             </p>
@@ -271,9 +278,9 @@ export function HomePage() {
               Practical resources for investors, businesses and travellers building meaningful
               connections with The Gambia.
             </p>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            <div className="mt-6 grid min-h-0 flex-1 grid-cols-3 gap-5 overflow-hidden">
               <DiscoverCard
-                image="/card-trade.jpg"
+                image="/card-trade.png"
                 kicker="TRADE & INVESTMENT"
                 title="Grow with one of West Africa’s most open economies"
                 body="Find sector intelligence and clear routes for responsible investment."
@@ -298,8 +305,8 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="location" className="bg-embassy-hero text-white">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <section id="location" className="home-panel section-gradient flex flex-col text-white">
+          <div className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">EMBASSY LOCATION</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               Find the Embassy in Doha
@@ -308,11 +315,11 @@ export function HomePage() {
               Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
               services and appointments.
             </p>
-            <div className="relative mt-8 overflow-hidden rounded-[28px] bg-[#f3efe4]">
+            <div className="relative mt-6 min-h-0 flex-1 overflow-hidden rounded-[28px] bg-[#f3efe4]">
               <iframe
                 title="Embassy of The Gambia in the West Bay Diplomatic Area, Doha"
                 src="https://maps.google.com/maps?q=West+Bay+Diplomatic+Area,+Doha,+Qatar&z=15&hl=en&output=embed"
-                className="h-[420px] w-full border-0"
+                className="h-full w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -329,15 +336,15 @@ export function HomePage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
-    </>
+      <SiteFooter className="home-panel flex flex-col" />
+    </div>
   );
 }
 
 function NewsSection() {
   return (
-    <section id="news" className="bg-embassy-hero text-white">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <section id="news" className="home-panel section-gradient text-white">
+      <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col justify-center px-4 py-6 sm:px-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">LATEST UPDATES</p>
@@ -348,23 +355,7 @@ function NewsSection() {
           View all updates
         </a>
       </div>
-      <div className="mt-8 flex gap-4 overflow-x-auto pb-2">
-        {news.map((item) => (
-          <article key={item.title} className="w-72 shrink-0 rounded-3xl border border-black/5 bg-white p-4">
-            <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>
-            <p className="mt-3 text-xs text-muted">{item.date}</p>
-            <h3 className="mt-1 text-base font-semibold leading-snug">{item.title}</h3>
-            <Image
-              src={item.image}
-              alt=""
-              width={272}
-              height={128}
-              className="mt-4 h-28 w-full rounded-xl object-cover"
-            />
-            <p className="mt-3 text-sm text-embassy">Read full update →</p>
-          </article>
-        ))}
-      </div>
+      <NewsReel items={news} />
       </div>
     </section>
   );
@@ -387,7 +378,7 @@ function DiscoverCard({
 }) {
   return (
     <article className="overflow-hidden rounded-3xl bg-white text-ink">
-      <Image src={image} alt="" width={406} height={176} className="h-44 w-full object-cover" />
+      <Image src={image} alt="" width={406} height={140} className="h-32 w-full object-cover" />
       <div className="p-5">
         <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>
         <h3 className="mt-2 text-xl font-semibold leading-snug">{title}</h3>

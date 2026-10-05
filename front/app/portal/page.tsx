@@ -100,6 +100,10 @@ export default function PortalPage() {
 }
 
 function Overview({ onOpen }: { onOpen: (section: string) => void }) {
+  const [adding, setAdding] = useState(false);
+  const [complaint, setComplaint] = useState("");
+  const [sent, setSent] = useState(false);
+
   return (
     <div className="space-y-5">
       <div className="rounded-3xl bg-embassy p-6 text-white">
@@ -119,12 +123,48 @@ function Overview({ onOpen }: { onOpen: (section: string) => void }) {
           </div>
           <button
             type="button"
-            onClick={() => onOpen("Personal Details")}
+            onClick={() => {
+              setSent(false);
+              setAdding((open) => !open);
+            }}
             className="rounded-full bg-white px-4 py-2 text-sm font-medium text-embassy"
           >
-            View citizen profile
+            Add complaint
           </button>
         </div>
+        {adding && (
+          <form
+            className="mt-4"
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (!complaint.trim()) return;
+              setComplaint("");
+              setAdding(false);
+              setSent(true);
+            }}
+          >
+            <label className="block text-sm text-white/80" htmlFor="complaint">
+              Describe your complaint
+            </label>
+            <textarea
+              id="complaint"
+              value={complaint}
+              onChange={(event) => setComplaint(event.target.value)}
+              rows={3}
+              className="mt-2 w-full rounded-2xl bg-white px-3 py-2 text-sm text-ink"
+              placeholder="What should the Embassy look into?"
+            />
+            <button
+              type="submit"
+              className="mt-3 rounded-full bg-white px-4 py-2 text-sm font-medium text-embassy"
+            >
+              Submit complaint
+            </button>
+          </form>
+        )}
+        {sent && (
+          <p className="mt-4 text-sm text-emerald-100">Your complaint has been recorded.</p>
+        )}
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         <Stat title="Valid" label="Active Passport Status" detail="Expires 08 Nov 2028" />
@@ -227,7 +267,6 @@ function Details() {
   const rows = [
     ["Full name", "Mariama Fatou Jallow"],
     ["Date and place of birth", "14 May 1992 · Banjul"],
-    ["Nationality", "Gambian"],
     ["Passport", "PC081924 · expires 08 Nov 2028"],
     ["Qatar ID", "29245 001 783 · expires 17 Feb 2027"],
     ["Address", "Building 18, Al Sadd Residence, Zone 38, Doha"],
