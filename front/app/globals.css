@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f5f2;
+  --foreground: #173128;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-embassy: #073528;
+  --color-embassy-deep: #04261d;
+  --color-embassy-hero: #0b4634;
+  --color-embassy-mid: #0e5640;
+  --color-embassy-soft: #e7f3ed;
+  --color-sand: #f4f1ea;
+  --color-ink: #173128;
+  --color-muted: #5c6e67;
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.hero-stripes {
+  background-color: #0b4634;
+  background-image: repeating-linear-gradient(
+    -32deg,
+    transparent,
+    transparent 18px,
+    rgba(255, 255, 255, 0.035) 18px,
+    rgba(255, 255, 255, 0.035) 19px
+  );
+}
+
+.auth-stripes {
+  background-color: #043b2e;
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.05),
+      transparent 32%
+    ),
+    repeating-linear-gradient(
+      -32deg,
+      transparent,
+      transparent 22px,
+      rgba(255, 255, 255, 0.03) 22px,
+      rgba(255, 255, 255, 0.03) 23px
+    );
+}

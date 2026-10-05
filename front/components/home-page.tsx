@@ -1,0 +1,471 @@
+import Image from "next/image";
+import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { AboutTabs } from "@/components/about-tabs";
+
+const highlights = [
+  ["Ambassador Meets Gambian Community", "Doha · Community outreach and consular updates"],
+  ["Consular Services Expanded", "Doha · New appointment slots and document support"],
+  ["24/7 Emergency Support", "Doha · Help available for citizens in urgent need"],
+];
+
+const staff = [
+  "Ambassador",
+  "Deputy Head of Mission",
+  "Consular Officer",
+  "Trade & Investment Officer",
+  "Administrative Officer",
+];
+
+const services = [
+  {
+    title: "Passport & Travel Documents",
+    body: "Issuance, renewal and Emergency Travel Certificates for Gambian citizens.",
+    items: ["Passport issuance", "Passport renewal", "Emergency travel"],
+  },
+  {
+    title: "Visas & Entry Regulations",
+    body: "Clear guidance for visitors, residents and official delegations travelling to The Gambia.",
+    items: ["Visa requirements", "Entry regulations", "Application guidance"],
+  },
+  {
+    title: "Civil Registration",
+    body: "Secure registration of vital events and official document legalisation.",
+    items: ["Birth registration", "Marriage registration", "Legalisation & attestation"],
+  },
+  {
+    title: "Other Consular Services",
+    body: "Citizen welfare, notarial support and referrals for the Gambian community in Qatar.",
+    items: ["Notarial services", "Citizen welfare", "Official letters"],
+  },
+];
+
+const news = [
+  {
+    tag: "Embassy announcement",
+    tone: "bg-emerald-50 text-emerald-800",
+    date: "28 September 2026",
+    title: "Mobile consular desk scheduled for Al Wakrah",
+    image: "/news-1.jpg",
+  },
+  {
+    tag: "Government news",
+    tone: "bg-sky-50 text-sky-800",
+    date: "22 September 2026",
+    title: "Gambia–Qatar bilateral cooperation forum concludes in Doha",
+    image: "/news-2.jpg",
+  },
+  {
+    tag: "Consular notice",
+    tone: "bg-amber-50 text-amber-800",
+    date: "18 September 2026",
+    title: "Updated passport renewal document checklist",
+    image: "/news-3.jpg",
+  },
+  {
+    tag: "Community event",
+    tone: "bg-stone-100 text-stone-700",
+    date: "12 October 2026",
+    title: "Gambian community cultural evening and family programme",
+    image: "/news-4.jpg",
+  },
+];
+
+export function HomePage() {
+  return (
+    <>
+      <SiteHeader />
+      <main>
+        <section className="hero-stripes text-white">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-16">
+            <div>
+              <p className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-white/80">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                OFFICIAL DIPLOMATIC MISSION
+              </p>
+              <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+                Embassy of The Gambia in the State of Qatar
+              </h1>
+              <p className="mt-4 max-w-lg text-base text-white/80">
+                Connecting citizens, facilitating consular services, and fostering bilateral trade
+                and culture.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/register"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-embassy"
+                >
+                  Register as Citizen in Qatar
+                </Link>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white"
+                >
+                  Explore Consular Services →
+                </a>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-[28px] shadow-2xl">
+              <Image
+                src="/embassy-building.jpg"
+                alt="Embassy building in the West Bay Diplomatic Area, Doha"
+                width={506}
+                height={378}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-7xl gap-4 px-4 pb-14 sm:px-6 md:grid-cols-3">
+            {highlights.map(([title, detail]) => (
+              <article
+                key={title}
+                className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-4 py-4"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                  <ImageIcon />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">{title}</span>
+                  <span className="block text-xs text-white/70">{detail}</span>
+                </span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+          <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
+            AMBASSADOR&apos;S MESSAGE
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink">
+            A warm welcome from the Ambassador
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Meet the Ambassador and learn more about the Embassy&apos;s commitment to Gambian
+            citizens and partners in Qatar.
+          </p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
+            <div className="flex items-center justify-center rounded-3xl border border-black/5 bg-white p-8">
+              <span className="flex h-44 w-44 items-center justify-center rounded-full bg-stone-200 text-stone-700">
+                <PersonIcon className="h-24 w-24" />
+              </span>
+            </div>
+            <article className="rounded-3xl border border-black/5 bg-white p-8">
+              <div className="flex items-start justify-between">
+                <h3 className="text-xl font-semibold">Ambassador&apos;s Welcome</h3>
+                <BuildingIcon />
+              </div>
+              <p className="mt-4 text-sm leading-7 text-muted">
+                “As Ambassador, I invite you to see this Embassy as a home away from home. We are
+                here to support Gambian citizens in Qatar, strengthen bilateral ties with the State
+                of Qatar, and make consular services clear, accessible and respectful for every
+                visitor.”
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-stone-100">
+                  <PersonIcon />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">Full Name</span>
+                  <span className="block text-xs text-muted">
+                    Ambassador of The Gambia to the State of Qatar
+                  </span>
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <div className="mt-14 flex items-end justify-between gap-4">
+            <h2 className="text-2xl font-semibold">Embassy Staff</h2>
+            <p className="hidden text-sm text-muted sm:block">
+              Meet the team supporting citizens and partners
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {staff.map((role) => (
+              <article key={role} className="rounded-2xl border border-black/5 bg-white px-4 py-5 text-center">
+                <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-stone-200">
+                  <PersonIcon />
+                </span>
+                <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
+                <p className="text-xs text-muted">{role}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="about" className="bg-embassy-hero text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+              OUR SHARED MISSION
+            </p>
+            <h2 className="mt-2 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+              Bringing The Gambia closer to its citizens and partners
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-white/75">
+              Explore our nation, understand the Embassy&apos;s mandate and connect directly with
+              the people serving the Gambian community in Qatar.
+            </p>
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              <AboutTabs />
+              <article id="embassy" className="rounded-3xl bg-[#0a3a2c] p-8">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-semibold">About The Embassy</h3>
+                  <BuildingIcon />
+                </div>
+                <p className="mt-4 text-sm leading-7 text-white/80">
+                  “Our Embassy is a home away from home for Gambians and a bridge for enduring
+                  cooperation with the State of Qatar.”
+                </p>
+                <ul className="mt-6 divide-y divide-white/10 text-sm">
+                  {["Ambassador's Welcome", "Embassy Mission", "Key Staff", "Direct Contact Info"].map(
+                    (item) => (
+                      <li key={item} className="flex items-center justify-between py-3">
+                        {item}
+                        <span aria-hidden>↗</span>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+          <p className="text-center text-xs font-semibold tracking-[0.16em] text-embassy-mid">
+            CONSULAR SERVICES
+          </p>
+          <h2 className="mt-2 text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+            Official support, clearly guided
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted">
+            Start with the service you need. Each guide includes eligibility, required documents,
+            fees and appointment information.
+          </p>
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service) => (
+              <article key={service.title} className="rounded-3xl border border-black/5 bg-white p-6">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-embassy-soft text-embassy">
+                  <BuildingIcon />
+                </span>
+                <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{service.body}</p>
+                <ul className="mt-4 space-y-2 text-sm text-embassy">
+                  {service.items.map((item) => (
+                    <li key={item}>→ {item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-sand px-5 py-4 sm:flex-row sm:items-center">
+            <p className="text-sm text-ink/80">
+              Unsure which service applies? Our consular team can help you choose the right route.
+            </p>
+            <a
+              href="#location"
+              className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium"
+            >
+              Contact Consular Desk
+            </a>
+          </div>
+        </section>
+
+        <section id="discover" className="bg-[#083d30] text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+              DISCOVER THE GAMBIA
+            </p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+              A destination for partnership and exploration
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-white/75">
+              Practical resources for investors, businesses and travellers building meaningful
+              connections with The Gambia.
+            </p>
+            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+              <DiscoverCard
+                image="/card-trade.jpg"
+                kicker="TRADE & INVESTMENT"
+                title="Grow with one of West Africa’s most open economies"
+                body="Find sector intelligence and clear routes for responsible investment."
+                tags={["Key Economic Sectors", "Business Procedures", "Trade Opportunities", "Useful Contacts"]}
+              />
+              <DiscoverCard
+                image="/card-tourism.jpg"
+                kicker="TOURISM"
+                title="Experience the Smiling Coast of Africa"
+                body="Plan an unforgettable visit shaped by nature, heritage and generous hospitality."
+                tags={["Key Attractions", "Beaches", "Cultural Heritage", "Events & Festivals", "Travel & Accommodation Info"]}
+              />
+              <DiscoverCard
+                image="/card-consular.jpg"
+                kicker="CONSULAR SERVICES"
+                title="Support for citizens and visitors in Qatar"
+                body="Access practical guidance on passports, visas, legalisation and emergency assistance from the Embassy of The Gambia in Doha."
+                tags={["Passport Services", "Visa Information", "Legalisation", "Emergency Assistance", "Contact the Embassy"]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="news" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">LATEST UPDATES</p>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight">News & announcements</h2>
+              <p className="mt-2 text-sm text-muted">Verified updates from the Embassy and community.</p>
+            </div>
+            <a href="#news" className="rounded-full border border-black/10 px-4 py-2 text-sm">
+              View all updates
+            </a>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {news.map((item) => (
+              <article key={item.title} className="rounded-3xl border border-black/5 bg-white p-4">
+                <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>
+                  {item.tag}
+                </span>
+                <p className="mt-3 text-xs text-muted">{item.date}</p>
+                <h3 className="mt-1 text-base font-semibold leading-snug">{item.title}</h3>
+                <Image
+                  src={item.image}
+                  alt=""
+                  width={272}
+                  height={128}
+                  className="mt-4 h-28 w-full rounded-xl object-cover"
+                />
+                <p className="mt-3 text-sm text-embassy">Read full update →</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="location" className="bg-embassy-hero text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">EMBASSY LOCATION</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Find the Embassy in Doha
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-white/75">
+              Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
+              services and appointments.
+            </p>
+            <div className="relative mt-8 overflow-hidden rounded-[28px] bg-[#f3efe4] p-6 text-ink">
+              <QatarMap />
+              <div className="mt-4 flex max-w-sm items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-embassy text-white">
+                  <PinIcon />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">Doha Central · Primary service centre</span>
+                  <span className="block text-xs text-muted">Appointments Mon–Thu · 08:30–14:00</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
+
+function DiscoverCard({
+  image,
+  kicker,
+  title,
+  body,
+  tags,
+}: {
+  image: string;
+  kicker: string;
+  title: string;
+  body: string;
+  tags: string[];
+}) {
+  return (
+    <article className="overflow-hidden rounded-3xl bg-white text-ink">
+      <Image src={image} alt="" width={406} height={176} className="h-44 w-full object-cover" />
+      <div className="p-5">
+        <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>
+        <h3 className="mt-2 text-xl font-semibold leading-snug">{title}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span key={tag} className="rounded-full bg-sand px-3 py-1 text-xs text-ink/80">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <a
+          href="#services"
+          className="mt-5 inline-flex rounded-full border border-black/10 px-4 py-2 text-sm"
+        >
+          Explore resources
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function QatarMap() {
+  const places = ["Al Shamal", "Al Khor", "Lusail", "Doha", "Al Daayen", "Al Rayyan", "Umm Salal", "Al Wakrah"];
+  return (
+    <div className="grid gap-6 md:grid-cols-[220px_1fr] md:items-center">
+      <svg viewBox="0 0 120 220" className="mx-auto h-64 w-36" aria-hidden="true">
+        <path
+          d="M58 8c10 8 18 18 16 32-2 12 8 16 10 28 2 14-8 18-6 32 2 16 14 22 8 40-6 16-4 28 2 40 4 10-8 22-20 28-14 6-28-4-30-18-2-16 8-20 4-36-4-14-16-16-14-32 2-18 12-16 10-32C36 70 24 62 30 42 36 22 46 16 58 8z"
+          fill="#0e5640"
+        />
+        <circle cx="62" cy="150" r="4" fill="#f4f1ea" />
+      </svg>
+      <ul className="grid grid-cols-2 gap-2 text-sm text-embassy sm:grid-cols-4">
+        {places.map((place, index) => (
+          <li key={place} className="rounded-full bg-white/80 px-3 py-1">
+            {index + 1}. {place}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ImageIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <circle cx="8.5" cy="10" r="1.5" />
+      <path d="M21 16l-5-5-9 8" />
+    </svg>
+  );
+}
+
+function PersonIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+    </svg>
+  );
+}
+
+function BuildingIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M4 20h16M6 20V8l6-4 6 4v12M10 20v-5h4v5" />
+    </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z" />
+      <circle cx="12" cy="10" r="2" />
+    </svg>
+  );
+}
