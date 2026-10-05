@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AboutTabs } from "@/components/about-tabs";
+import { EmbassyCard } from "@/components/embassy-card";
 import { HighlightReel } from "@/components/highlight-reel";
 
 const staff = [
@@ -192,24 +193,7 @@ export function HomePage() {
             </p>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
               <AboutTabs />
-              <article id="embassy" className="rounded-3xl bg-[#0a3a2c] p-8">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-semibold">About The Embassy</h3>
-                  <BuildingIcon />
-                </div>
-                <p className="mt-4 text-sm leading-7 text-white/80">
-                  “Our Embassy is a home away from home for Gambians and a bridge for enduring
-                  cooperation with the State of Qatar.”
-                </p>
-                <ul className="mt-6 divide-y divide-white/10 text-sm">
-                  {["Our Vision", "Our Values", "Embassy Mission"].map((item) => (
-                    <li key={item} className="flex items-center justify-between py-3">
-                      {item}
-                      <span aria-hidden>↗</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
+              <EmbassyCard />
             </div>
           </div>
         </section>

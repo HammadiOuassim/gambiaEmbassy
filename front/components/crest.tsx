@@ -1,14 +1,15 @@
+import Image from "next/image";
+
 export function Crest({ className = "h-10 w-10" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
-      <circle cx="32" cy="32" r="32" fill="#073528" />
-      <circle cx="32" cy="32" r="28" fill="#f4f1ea" />
-      <path d="M32 10l14 6v14c0 10-6 16-14 20-8-4-14-10-14-20V16l14-6z" fill="#0b4634" />
-      <path d="M32 16l9 4v9c0 6-4 11-9 14-5-3-9-8-9-14v-9l9-4z" fill="#f4f1ea" />
-      <path d="M23 28h18v3H23zm0 6h18v3H23z" fill="#0b4634" />
-      <circle cx="32" cy="24" r="3" fill="#c4a15a" />
-      <path d="M20 46c4 4 8 6 12 6s8-2 12-6" fill="none" stroke="#ce1126" strokeWidth="2" />
-    </svg>
+    <Image
+      src="/coat-of-arms.png"
+      alt=""
+      width={500}
+      height={500}
+      className={`object-contain ${className}`}
+      aria-hidden
+    />
   );
 }
 
