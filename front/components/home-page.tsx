@@ -178,15 +178,15 @@ export function HomePage() {
 
         <NewsSection />
 
-        <section id="about" className="bg-embassy-hero text-white">
+        <section id="about" className="bg-[#f6f5f2] text-ink">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+            <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               OUR SHARED MISSION
             </p>
             <h2 className="mt-2 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
               Bringing The Gambia closer to its citizens and partners
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/75">
+            <p className="mt-3 max-w-2xl text-sm text-muted">
               Explore our nation, understand the Embassy&apos;s mandate and connect directly with
               the people serving the Gambian community in Qatar.
             </p>
@@ -214,14 +214,15 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="services" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-          <p className="text-center text-xs font-semibold tracking-[0.16em] text-embassy-mid">
+        <section id="services" className="bg-embassy-hero text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+          <p className="text-center text-xs font-semibold tracking-[0.16em] text-emerald-200">
             CONSULAR SERVICES
           </p>
           <h2 className="mt-2 text-center text-3xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/75">
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
@@ -252,17 +253,18 @@ export function HomePage() {
               Contact Consular Desk
             </a>
           </div>
+          </div>
         </section>
 
-        <section id="discover" className="bg-[#083d30] text-white">
+        <section id="discover" className="bg-[#f6f5f2] text-ink">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+            <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               DISCOVER THE GAMBIA
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               A destination for partnership and exploration
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/75">
+            <p className="mt-3 max-w-2xl text-sm text-muted">
               Practical resources for investors, businesses and travellers building meaningful
               connections with The Gambia.
             </p>
@@ -330,14 +332,15 @@ export function HomePage() {
 
 function NewsSection() {
   return (
-    <section id="news" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <section id="news" className="bg-embassy-hero text-white">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">LATEST UPDATES</p>
+          <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">LATEST UPDATES</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight">News & announcements</h2>
-          <p className="mt-2 text-sm text-muted">Verified updates from the Embassy and community.</p>
+          <p className="mt-2 text-sm text-white/75">Verified updates from the Embassy and community.</p>
         </div>
-        <a href="#news" className="rounded-full border border-black/10 px-4 py-2 text-sm">
+        <a href="#news" className="rounded-full border border-white/30 px-4 py-2 text-sm">
           View all updates
         </a>
       </div>
@@ -357,6 +360,7 @@ function NewsSection() {
             <p className="mt-3 text-sm text-embassy">Read full update →</p>
           </article>
         ))}
+      </div>
       </div>
     </section>
   );
