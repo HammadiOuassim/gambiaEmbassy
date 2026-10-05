@@ -7,7 +7,7 @@ import { EmbassyCard } from "@/components/embassy-card";
 import { HighlightReel } from "@/components/highlight-reel";
 
 const staff = [
-  "Ambassador",
+  "Consular Officer",
   "Deputy Head of Mission",
   "Consular Officer",
   "Trade & Investment Officer",
@@ -73,8 +73,16 @@ export function HomePage() {
     <>
       <SiteHeader />
       <main>
-        <section className="hero-stripes text-white">
-          <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:py-16">
+        <section className="hero-stripes relative flex h-[calc(100dvh-6rem)] flex-col overflow-hidden text-white">
+          <div
+            className="pointer-events-none absolute -top-[121px] -right-[110px] h-[452px] w-[452px] rounded-full border border-[#c9b896]/80"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -top-[52px] -right-[41px] h-[314px] w-[314px] rounded-full border border-[#c9b896]/80"
+            aria-hidden
+          />
+          <div className="relative z-10 mx-auto grid min-h-0 w-full max-w-7xl flex-1 grid-cols-1 items-center gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2">
             <div>
               <p className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-white/80">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
@@ -102,15 +110,26 @@ export function HomePage() {
                 </a>
               </div>
             </div>
-            <div className="overflow-hidden rounded-[28px] shadow-2xl">
+            <div className="relative aspect-[16/10] w-full max-w-[560px] justify-self-end self-center overflow-hidden rounded-[28px] shadow-2xl">
               <Image
-                src="/embassy-building.jpg"
+                src="/embassy-doha.jpg"
                 alt="Embassy building in the West Bay Diplomatic Area, Doha"
-                width={506}
-                height={378}
+                fill
                 priority
-                className="h-full w-full object-cover"
+                sizes="560px"
+                className="object-cover object-[center_30%]"
               />
+              <div className="absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-3 rounded-2xl bg-white/75 px-3 py-2.5 text-ink shadow-lg backdrop-blur-sm">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e7f6ef] text-embassy">
+                  <PinIcon />
+                </span>
+                <span>
+                  <span className="block text-[10px] font-semibold tracking-[0.16em] text-muted">
+                    EMBASSY IN DOHA
+                  </span>
+                  <span className="block text-sm font-semibold">West Bay Diplomatic Area</span>
+                </span>
+              </div>
             </div>
           </div>
           <HighlightReel />
@@ -164,9 +183,9 @@ export function HomePage() {
               Meet the team supporting citizens and partners
             </p>
           </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {staff.map((role) => (
-              <article key={role} className="rounded-2xl border border-black/5 bg-white px-4 py-5 text-center">
+          <div className="mt-6 flex gap-4 overflow-x-auto pb-2">
+            {staff.map((role, index) => (
+              <article key={`${role}-${index}`} className="w-44 shrink-0 rounded-2xl border border-black/5 bg-white px-4 py-5 text-center">
                 <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-stone-200">
                   <PersonIcon />
                 </span>
@@ -268,11 +287,12 @@ export function HomePage() {
                 tags={["Key Attractions", "Beaches", "Cultural Heritage", "Events & Festivals", "Travel & Accommodation Info"]}
               />
               <DiscoverCard
-                image="/card-consular.jpg"
-                kicker="CONSULAR SERVICES"
-                title="Support for citizens and visitors in Qatar"
-                body="Access practical guidance on passports, visas, legalisation and emergency assistance from the Embassy of The Gambia in Doha."
-                tags={["Passport Services", "Visa Information", "Legalisation", "Emergency Assistance", "Contact the Embassy"]}
+                image="/history/history-3.jpg"
+                kicker="TOP DESTINATION"
+                title="Follow the River Gambia from the coast inland"
+                body="The river that names the country is its defining journey, from the Atlantic shore through mangrove creeks to historic river towns."
+                tags={["River Gambia", "Kunta Kinteh Island", "Banjul", "Mangrove Creeks"]}
+                href="#about"
               />
             </div>
           </div>
@@ -356,12 +376,14 @@ function DiscoverCard({
   title,
   body,
   tags,
+  href = "#services",
 }: {
   image: string;
   kicker: string;
   title: string;
   body: string;
   tags: string[];
+  href?: string;
 }) {
   return (
     <article className="overflow-hidden rounded-3xl bg-white text-ink">
@@ -378,7 +400,7 @@ function DiscoverCard({
           ))}
         </div>
         <a
-          href="#services"
+          href={href}
           className="mt-5 inline-flex rounded-full border border-black/10 px-4 py-2 text-sm"
         >
           Explore resources

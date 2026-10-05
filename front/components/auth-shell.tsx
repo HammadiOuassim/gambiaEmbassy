@@ -38,9 +38,8 @@ export function AuthShell({ children }: { children: ReactNode }) {
             </span>
           </div>
           <div className="overflow-hidden rounded-2xl">
-            {/* The location chip is already part of this photograph. */}
             <Image
-              src="/embassy-building.jpg"
+              src="/embassy-doha.jpg"
               alt="Embassy of The Gambia in Doha"
               width={506}
               height={378}

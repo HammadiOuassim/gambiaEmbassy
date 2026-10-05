@@ -114,7 +114,7 @@ export function HighlightReel() {
   return (
     <div
       ref={viewportRef}
-      className="overflow-hidden px-4 pb-14 sm:px-6"
+      className="relative z-10 shrink-0 overflow-hidden px-4 pt-2 pb-6 sm:px-6"
       onPointerDown={(event) => {
         startX.current = event.clientX;
       }}
