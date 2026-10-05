@@ -3,12 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AboutTabs } from "@/components/about-tabs";
-
-const highlights = [
-  ["Ambassador Meets Gambian Community", "Doha · Community outreach and consular updates"],
-  ["Consular Services Expanded", "Doha · New appointment slots and document support"],
-  ["24/7 Emergency Support", "Doha · Help available for citizens in urgent need"],
-];
+import { HighlightReel } from "@/components/highlight-reel";
 
 const staff = [
   "Ambassador",
@@ -117,22 +112,7 @@ export function HomePage() {
               />
             </div>
           </div>
-          <div className="mx-auto grid max-w-7xl gap-4 px-4 pb-14 sm:px-6 md:grid-cols-3">
-            {highlights.map(([title, detail]) => (
-              <article
-                key={title}
-                className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-4 py-4"
-              >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <ImageIcon />
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold">{title}</span>
-                  <span className="block text-xs text-white/70">{detail}</span>
-                </span>
-              </article>
-            ))}
-          </div>
+          <HighlightReel />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
@@ -196,6 +176,8 @@ export function HomePage() {
           </div>
         </section>
 
+        <NewsSection />
+
         <section id="about" className="bg-embassy-hero text-white">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
@@ -220,14 +202,12 @@ export function HomePage() {
                   cooperation with the State of Qatar.”
                 </p>
                 <ul className="mt-6 divide-y divide-white/10 text-sm">
-                  {["Ambassador's Welcome", "Embassy Mission", "Key Staff", "Direct Contact Info"].map(
-                    (item) => (
-                      <li key={item} className="flex items-center justify-between py-3">
-                        {item}
-                        <span aria-hidden>↗</span>
-                      </li>
-                    ),
-                  )}
+                  {["Our Vision", "Our Values", "Embassy Mission"].map((item) => (
+                    <li key={item} className="flex items-center justify-between py-3">
+                      {item}
+                      <span aria-hidden>↗</span>
+                    </li>
+                  ))}
                 </ul>
               </article>
             </div>
@@ -245,9 +225,9 @@ export function HomePage() {
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-10 flex gap-4 overflow-x-auto pb-2">
             {services.map((service) => (
-              <article key={service.title} className="rounded-3xl border border-black/5 bg-white p-6">
+              <article key={service.title} className="w-72 shrink-0 rounded-3xl border border-black/5 bg-white p-6 sm:w-80">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-embassy-soft text-embassy">
                   <BuildingIcon />
                 </span>
@@ -312,38 +292,6 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="news" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">LATEST UPDATES</p>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight">News & announcements</h2>
-              <p className="mt-2 text-sm text-muted">Verified updates from the Embassy and community.</p>
-            </div>
-            <a href="#news" className="rounded-full border border-black/10 px-4 py-2 text-sm">
-              View all updates
-            </a>
-          </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {news.map((item) => (
-              <article key={item.title} className="rounded-3xl border border-black/5 bg-white p-4">
-                <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>
-                  {item.tag}
-                </span>
-                <p className="mt-3 text-xs text-muted">{item.date}</p>
-                <h3 className="mt-1 text-base font-semibold leading-snug">{item.title}</h3>
-                <Image
-                  src={item.image}
-                  alt=""
-                  width={272}
-                  height={128}
-                  className="mt-4 h-28 w-full rounded-xl object-cover"
-                />
-                <p className="mt-3 text-sm text-embassy">Read full update →</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section id="location" className="bg-embassy-hero text-white">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">EMBASSY LOCATION</p>
@@ -354,9 +302,15 @@ export function HomePage() {
               Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
               services and appointments.
             </p>
-            <div className="relative mt-8 overflow-hidden rounded-[28px] bg-[#f3efe4] p-6 text-ink">
-              <QatarMap />
-              <div className="mt-4 flex max-w-sm items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
+            <div className="relative mt-8 overflow-hidden rounded-[28px] bg-[#f3efe4]">
+              <iframe
+                title="Embassy of The Gambia in the West Bay Diplomatic Area, Doha"
+                src="https://maps.google.com/maps?q=West+Bay+Diplomatic+Area,+Doha,+Qatar&z=15&hl=en&output=embed"
+                className="h-[420px] w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="absolute bottom-4 left-4 flex max-w-sm items-center gap-3 rounded-2xl bg-white px-4 py-3 text-ink shadow-sm">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-embassy text-white">
                   <PinIcon />
                 </span>
@@ -371,6 +325,40 @@ export function HomePage() {
       </main>
       <SiteFooter />
     </>
+  );
+}
+
+function NewsSection() {
+  return (
+    <section id="news" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">LATEST UPDATES</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight">News & announcements</h2>
+          <p className="mt-2 text-sm text-muted">Verified updates from the Embassy and community.</p>
+        </div>
+        <a href="#news" className="rounded-full border border-black/10 px-4 py-2 text-sm">
+          View all updates
+        </a>
+      </div>
+      <div className="mt-8 flex gap-4 overflow-x-auto pb-2">
+        {news.map((item) => (
+          <article key={item.title} className="w-72 shrink-0 rounded-3xl border border-black/5 bg-white p-4">
+            <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>
+            <p className="mt-3 text-xs text-muted">{item.date}</p>
+            <h3 className="mt-1 text-base font-semibold leading-snug">{item.title}</h3>
+            <Image
+              src={item.image}
+              alt=""
+              width={272}
+              height={128}
+              className="mt-4 h-28 w-full rounded-xl object-cover"
+            />
+            <p className="mt-3 text-sm text-embassy">Read full update →</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -409,38 +397,6 @@ function DiscoverCard({
         </a>
       </div>
     </article>
-  );
-}
-
-function QatarMap() {
-  const places = ["Al Shamal", "Al Khor", "Lusail", "Doha", "Al Daayen", "Al Rayyan", "Umm Salal", "Al Wakrah"];
-  return (
-    <div className="grid gap-6 md:grid-cols-[220px_1fr] md:items-center">
-      <svg viewBox="0 0 120 220" className="mx-auto h-64 w-36" aria-hidden="true">
-        <path
-          d="M58 8c10 8 18 18 16 32-2 12 8 16 10 28 2 14-8 18-6 32 2 16 14 22 8 40-6 16-4 28 2 40 4 10-8 22-20 28-14 6-28-4-30-18-2-16 8-20 4-36-4-14-16-16-14-32 2-18 12-16 10-32C36 70 24 62 30 42 36 22 46 16 58 8z"
-          fill="#0e5640"
-        />
-        <circle cx="62" cy="150" r="4" fill="#f4f1ea" />
-      </svg>
-      <ul className="grid grid-cols-2 gap-2 text-sm text-embassy sm:grid-cols-4">
-        {places.map((place, index) => (
-          <li key={place} className="rounded-full bg-white/80 px-3 py-1">
-            {index + 1}. {place}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function ImageIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <circle cx="8.5" cy="10" r="1.5" />
-      <path d="M21 16l-5-5-9 8" />
-    </svg>
   );
 }
 

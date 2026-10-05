@@ -19,14 +19,14 @@ export function SiteHeader() {
           <p className="flex items-center gap-2">
             <PhoneIcon />
             <span>Citizen emergency line · +974 4486 7117 · Available 24/7</span>
-          </p>
-          <div className="hidden items-center gap-3 md:flex">
-            <span className="inline-flex overflow-hidden rounded-full ring-1 ring-white/30">
+            <span className="ml-1 inline-flex overflow-hidden rounded-full ring-1 ring-white/40">
               <GambiaFlag className="h-4 w-6" />
             </span>
-            <span className="inline-flex overflow-hidden rounded-full ring-1 ring-white/30">
+            <span className="inline-flex overflow-hidden rounded-full ring-1 ring-white/40">
               <QatarFlag className="h-4 w-6" />
             </span>
+          </p>
+          <div className="hidden items-center gap-3 md:flex">
             <span className="text-white/80">Accessibility</span>
             <span className="font-semibold">EN</span>
             <span className="text-white/55" title="Arabic will be added after the English release">
