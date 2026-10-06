@@ -53,7 +53,16 @@ export function SiteHeader() {
           </div>
         </div>
         <div className="min-h-0 flex-1 border-b border-black/5">
-          <div className="mx-auto flex h-full max-w-7xl items-center gap-3 px-4 sm:px-6">
+          <div className="relative mx-auto flex h-full max-w-7xl items-center gap-3 px-4 pr-16 sm:px-6 sm:pr-20">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute top-0 right-0 h-8 w-12"
+              style={{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%)",
+                background:
+                  "linear-gradient(180deg, #CE1126 0 30%, #ffffff 30% 34%, #0C1C8C 34% 66%, #ffffff 66% 70%, #3A7728 70% 100%)",
+              }}
+            />
             <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
               <Crest className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
               <span className="hidden leading-tight sm:block">

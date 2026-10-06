@@ -181,7 +181,7 @@ export function HomePage() {
         <section id="services" className="home-panel section-stone text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
           <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
-            CONSULAR SERVICES
+            STAFF ASSISTING A CITIZEN
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided

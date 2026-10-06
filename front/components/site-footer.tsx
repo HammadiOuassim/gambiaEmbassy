@@ -49,7 +49,7 @@ export function SiteFooter({ className = "" }: { className?: string }) {
           <p className="mt-2 text-sm leading-5 text-white/70">Sunday–Thursday</p>
           <p className="text-sm leading-5 text-white/70">08:30–14:00</p>
           <p className="mt-1.5 text-sm leading-5 text-white/70">Friday–Saturday: Closed</p>
-          <p className="mt-1.5 text-sm font-medium text-amber-200">Emergency support 24/7</p>
+          <p className="mt-1.5 text-sm font-medium text-amber-200">Support/helpline visual</p>
         </div>
         <FooterCol
           title="Quick Links"

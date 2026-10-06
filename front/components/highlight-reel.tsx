@@ -5,10 +5,10 @@ import Image from "next/image";
 
 const highlights = [
   {
-    title: "Citizen Registration Drive",
-    detail: "Doha · Gambians in Qatar invited to register with the Embassy",
+    title: "H.E. Ambassador with Gambian community in Doha",
+    detail: "Doha · Community gathering",
     image: "/news-4.jpg",
-    alt: "Gambians gathered for an Embassy registration outreach",
+    alt: "H.E. the Ambassador with the Gambian community in Doha",
   },
   {
     title: "Consular Services Expanded",
