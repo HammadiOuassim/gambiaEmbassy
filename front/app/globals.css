@@ -3,6 +3,7 @@
 :root {
   --background: #f6f5f2;
   --foreground: #173128;
+  --panel: #cccccc;
 }
 
 @theme inline {
@@ -16,6 +17,7 @@
   --color-sand: #f4f1ea;
   --color-ink: #173128;
   --color-muted: #5c6e67;
+  --color-panel: var(--panel);
   --font-sans: var(--font-geist-sans);
 }
 
@@ -50,6 +52,11 @@ body {
   overflow: hidden;
 }
 
+.home-footer {
+  scroll-snap-align: end;
+  scroll-snap-stop: always;
+}
+
 @media (max-width: 1023px) {
   body {
     overflow-x: clip;
@@ -69,10 +76,19 @@ body {
     overflow-x: clip;
     overflow-y: visible;
   }
+
+  .home-footer {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
 }
 
 .section-gradient {
   background-image: linear-gradient(90deg, #0c5a37 22%, #0e4a5c 82%, #14283e 100%);
+}
+
+.section-stone {
+  background-color: var(--panel);
 }
 
 .auth-stripes {

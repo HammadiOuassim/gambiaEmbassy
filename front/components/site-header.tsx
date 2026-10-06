@@ -19,7 +19,15 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-white">
-      <div className="flex h-24 flex-col">
+      <div
+        className="h-1.5 w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, #CE1126 0 30%, #ffffff 30% 34%, #0C1C8C 34% 66%, #ffffff 66% 70%, #3A7728 70% 100%)",
+        }}
+        aria-hidden
+      />
+      <div className="flex h-[calc(6rem-0.375rem)] flex-col">
         <div className="bg-embassy text-white">
           <div className="mx-auto flex h-8 max-w-7xl items-center justify-between gap-3 px-4 text-xs sm:px-6">
             <p className="flex min-w-0 items-center gap-2">
@@ -45,7 +53,16 @@ export function SiteHeader() {
           </div>
         </div>
         <div className="min-h-0 flex-1 border-b border-black/5">
-          <div className="mx-auto flex h-full max-w-7xl items-center gap-3 px-4 sm:px-6">
+          <div className="relative mx-auto flex h-full max-w-7xl items-center gap-3 px-4 pr-16 sm:px-6 sm:pr-20">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute top-0 right-0 h-8 w-12"
+              style={{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%)",
+                background:
+                  "linear-gradient(180deg, #CE1126 0 30%, #ffffff 30% 34%, #0C1C8C 34% 66%, #ffffff 66% 70%, #3A7728 70% 100%)",
+              }}
+            />
             <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
               <Crest className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
               <span className="hidden leading-tight sm:block">
@@ -73,7 +90,7 @@ export function SiteHeader() {
               </Link>
               <Link
                 href="/register"
-                className="rounded-full bg-embassy px-3 py-2 text-sm font-medium text-white hover:bg-embassy-mid sm:px-4"
+                className="rounded-full bg-[#CE1126] px-3 py-2 text-sm font-medium text-white hover:bg-[#b10e20] sm:px-4"
               >
                 Register
               </Link>
