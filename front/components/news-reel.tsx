@@ -155,7 +155,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
         {cards.map((item, cardIndex) => (
           <article
             key={`${item.title}-${cardIndex}`}
-            className="shrink-0 rounded-3xl border border-black/5 bg-white p-4 text-ink"
+            className="shrink-0 rounded-3xl border border-black/5 bg-[#f6f5f2] p-4 text-ink"
             style={{ width: cardWidth }}
           >
             <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>

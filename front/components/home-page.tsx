@@ -198,28 +198,6 @@ export function HomePage() {
           </div>
         </section>
 
-        <NewsSection />
-
-        <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
-          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
-            <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
-              THE NATION AND THE EMBASSY
-            </p>
-            <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
-              Know The Gambia, and the Embassy that serves it in Qatar
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-muted">
-              History, geography and government of the country, beside the vision, values and
-              mission of this Embassy: a trusted presence that keeps Gambians connected to home and
-              strengthens ties with the State of Qatar.
-            </p>
-            <div className="mt-6 grid min-h-0 flex-1 gap-6 overflow-hidden sm:grid-cols-2">
-              <AboutTabs />
-              <EmbassyCard />
-            </div>
-          </div>
-        </section>
-
         <section id="services" className="home-panel section-gradient text-white">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
           <p className="text-center text-xs font-semibold tracking-[0.16em] text-emerald-200">
@@ -232,9 +210,9 @@ export function HomePage() {
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
-          <div className="mx-auto mt-6 grid w-full max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mx-auto mt-6 flex w-full max-w-6xl gap-3 overflow-x-auto md:grid md:grid-cols-4 md:overflow-visible">
             {services.map((service) => (
-              <article key={service.title} className="min-w-0 rounded-2xl border border-black/5 bg-white p-4 text-ink">
+              <article key={service.title} className="w-56 shrink-0 rounded-2xl border border-black/5 bg-white p-4 text-ink md:w-auto md:min-w-0">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
                   <BuildingIcon />
                 </span>
@@ -266,15 +244,35 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="discover" className="home-panel bg-[#f6f5f2] text-ink">
+        <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
+              THE NATION AND THE EMBASSY
+            </p>
+            <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
+              Know The Gambia, and the Embassy that serves it in Qatar
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-muted">
+              History, geography and government of the country, beside the vision, values and
+              mission of this Embassy: a trusted presence that keeps Gambians connected to home and
+              strengthens ties with the State of Qatar.
+            </p>
+            <div className="mt-6 grid min-h-0 flex-1 gap-6 overflow-hidden sm:grid-cols-2">
+              <AboutTabs />
+              <EmbassyCard />
+            </div>
+          </div>
+        </section>
+
+        <section id="discover" className="home-panel section-gradient text-white">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
               DISCOVER THE GAMBIA
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
               A destination for partnership and exploration
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-muted">
+            <p className="mt-3 max-w-2xl text-sm text-white/75">
               Practical resources for investors, businesses and travellers building meaningful
               connections with The Gambia.
             </p>
@@ -304,6 +302,8 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+        <NewsSection />
 
         <section id="location" className="home-panel section-gradient flex flex-col text-white">
           <div className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-4 py-6 sm:px-6">
@@ -343,15 +343,15 @@ export function HomePage() {
 
 function NewsSection() {
   return (
-    <section id="news" className="home-panel section-gradient text-white">
+    <section id="news" className="home-panel bg-white text-ink">
       <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col justify-center px-4 py-6 sm:px-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">LATEST UPDATES</p>
+          <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">LATEST UPDATES</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">News & announcements</h2>
-          <p className="mt-2 text-sm text-white/75">Verified updates from the Embassy and community.</p>
+          <p className="mt-2 text-sm text-muted">Verified updates from the Embassy and community.</p>
         </div>
-        <a href="#news" className="rounded-full border border-white/30 px-4 py-2 text-sm">
+        <a href="#news" className="rounded-full border border-black/10 px-4 py-2 text-sm">
           View all updates
         </a>
       </div>
