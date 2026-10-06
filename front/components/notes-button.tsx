@@ -158,7 +158,7 @@ export function NotesButton() {
                 Notes
               </h2>
               <p className="mt-1 text-xs leading-5 text-muted">
-                Saved in a file on the site, so they stay after you close the browser.
+                Add your note so it can be considered in the next development phases.
               </p>
             </div>
             <button
