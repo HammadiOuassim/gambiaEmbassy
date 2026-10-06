@@ -15,13 +15,7 @@ const tabs = {
 type TabName = keyof typeof tabs;
 
 const slides: Record<TabName, { src: string; alt: string }[]> = {
-  History: [
-    { src: "/history/history-arch.png", alt: "Arch 22 in Banjul" },
-    { src: "/history/history-4.jpg", alt: "Wassu stone circles in The Gambia" },
-    { src: "/history/history-2.jpg", alt: "Fort on Kunta Kinteh Island" },
-    { src: "/history/history-3.jpg", alt: "Sunrise on the River Gambia at Banjul" },
-    { src: "/history/history-1.jpg", alt: "Arch 22 monument in Banjul" },
-  ],
+  History: [{ src: "/history/history-arch.png", alt: "Arch 22 in Banjul" }],
   Geography: [
     { src: "/geography/geography-river.png", alt: "Aerial view of the River Gambia winding through mangroves" },
     { src: "/geography/geography-1.jpg", alt: "Atlantic beach in The Gambia" },
@@ -30,11 +24,7 @@ const slides: Record<TabName, { src: string; alt: string }[]> = {
     { src: "/geography/geography-4.jpg", alt: "Aerial view of the landscape near Banjul" },
   ],
   Government: [
-    { src: "/government/government-president.png", alt: "President of The Gambia speaking at the United Nations" },
-    { src: "/government/government-1.jpg", alt: "National Assembly and Marina Parade in Banjul" },
     { src: "/government/government-2.jpg", alt: "Presidential inauguration procession in Banjul" },
-    { src: "/government/government-3.jpg", alt: "Meeting at State House in Banjul" },
-    { src: "/government/government-4.jpg", alt: "Inauguration crowd greeting the president in Banjul" },
   ],
 };
 
@@ -45,6 +35,7 @@ export function AboutTabs() {
 
   useEffect(() => {
     setFrame(0);
+    if (images.length < 2) return;
     const timer = window.setInterval(() => {
       setFrame((current) => (current + 1) % images.length);
     }, 3000);

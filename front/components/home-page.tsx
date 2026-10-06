@@ -178,15 +178,15 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="services" className="home-panel section-gradient text-white">
+        <section id="services" className="home-panel section-stone text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
-          <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+          <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
             CONSULAR SERVICES
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
           </h2>
-          <p className="mt-3 max-w-2xl text-sm text-white/75">
+          <p className="mt-3 max-w-2xl text-sm text-muted">
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
@@ -227,7 +227,7 @@ export function HomePage() {
         <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
-              THE NATION AND THE EMBASSY
+              THE EMBASSY
             </p>
             <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
               Know The Gambia, and the Embassy that serves it in Qatar
@@ -244,15 +244,15 @@ export function HomePage() {
           </div>
         </section>
 
-        <section id="discover" className="home-panel section-gradient text-white">
+        <section id="discover" className="home-panel section-stone text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
-            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
+            <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
               DISCOVER THE GAMBIA
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
               A destination for partnership and exploration
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/75">
+            <p className="mt-3 max-w-2xl text-sm text-muted">
               Practical resources for investors, businesses and travellers building meaningful
               connections with The Gambia.
             </p>
@@ -285,13 +285,13 @@ export function HomePage() {
 
         <NewsSection />
 
-        <section id="location" className="home-panel section-gradient flex flex-col text-white">
+        <section id="location" className="home-panel section-stone flex flex-col text-ink">
           <div className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-4 py-6 sm:px-6">
-            <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">EMBASSY LOCATION</p>
+            <p className="text-xs font-semibold tracking-[0.16em] text-embassy">EMBASSY LOCATION</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
               Find the Embassy in Doha
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/75">
+            <p className="mt-3 max-w-2xl text-sm text-muted">
               Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
               services and appointments.
             </p>
