@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AboutTabs } from "@/components/about-tabs";
+import { AmbassadorMessage } from "@/components/ambassador-message";
 import { EmbassyCard } from "@/components/embassy-card";
 import { HighlightReel } from "@/components/highlight-reel";
 import { NewsReel } from "@/components/news-reel";
@@ -134,28 +135,7 @@ export function HomePage() {
                   <PersonIcon className="h-16 w-16" />
                 </span>
               </div>
-              <article className="rounded-3xl border border-black/5 bg-white px-6 py-5">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-xl font-semibold">Ambassador&apos;s Welcome</h3>
-                  <BuildingIcon />
-                </div>
-                <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
-                  “This Embassy is a home away from home. We support Gambian citizens in Qatar,
-                  strengthen ties with the State of Qatar, and keep consular services clear and
-                  respectful for every visitor.”
-                </p>
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-100">
-                    <PersonIcon />
-                  </span>
-                  <span>
-                    <span className="block text-sm font-semibold">Full Name</span>
-                    <span className="block text-xs text-muted">
-                      Ambassador of The Gambia to the State of Qatar
-                    </span>
-                  </span>
-                </div>
-              </article>
+              <AmbassadorMessage />
             </div>
             <div className="mt-6 flex items-end justify-between gap-4">
               <h2 className="text-xl font-semibold">Embassy Staff</h2>

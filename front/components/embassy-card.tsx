@@ -1,24 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { MessageDialog } from "@/components/message-dialog";
 
 const items = [
-  {
-    title: "Our Vision",
-    body: "A trusted Embassy where every Gambian in Qatar is protected, heard and connected to home, and where cooperation with the State of Qatar grows stronger each year.",
-  },
-  {
-    title: "Our Values",
-    body: "Service, integrity and hospitality. We treat every citizen with respect, keep official work transparent and honour the dignity of The Gambia in every engagement.",
-  },
-  {
-    title: "Embassy Mission",
-    body: "To represent the Republic of The Gambia in Qatar, deliver consular services to citizens, and strengthen diplomatic, economic and cultural ties with the State of Qatar.",
-  },
+  { title: "Our Vision", dialogTitle: "Our Vision" },
+  { title: "Our Values", dialogTitle: "Our Core Values" },
+  { title: "Embassy Mission", dialogTitle: "Our Mission" },
+] as const;
+
+const missionPoints = [
+  ["Diplomatic Excellence", "Strengthening the excellent political and diplomatic ties between The Gambia and the State of Qatar."],
+  ["Consular Service", "Providing efficient, transparent, and dignified consular service and protection to all Gambian nationals in Qatar."],
+  ["Economic Diplomacy", "Promoting The Gambia as a peaceful, stable, and attractive destination for trade, investment and tourism — The Smiling Coast of Africa."],
+  ["Community & Culture", "Uniting and empowering the Gambian diaspora in Qatar and promoting Gambian culture and values."],
+  ["Cooperation", "Facilitating cooperation in education, labour, health, aviation, and Islamic affairs for the mutual benefit of our two peoples."],
+] as const;
+
+const values = [
+  "Patriotism",
+  "Professionalism & Integrity",
+  "Service to Citizens",
+  "Mutual Respect and Friendship",
+  "Transparency",
 ] as const;
 
 export function EmbassyCard() {
-  const [open, setOpen] = useState<(typeof items)[number]["title"] | null>(null);
+  const [dialog, setDialog] = useState<(typeof items)[number]["title"] | null>(null);
 
   return (
     <article
@@ -44,41 +52,54 @@ export function EmbassyCard() {
         with the State of Qatar.”
       </p>
       <ul className="mt-6 divide-y divide-white/15 text-sm">
-        {items.map((item) => {
-          const isOpen = open === item.title;
-          return (
-            <li key={item.title}>
-              <button
-                type="button"
-                aria-expanded={isOpen}
-                onClick={() => setOpen(isOpen ? null : item.title)}
-                className={`flex w-full items-center justify-between py-3 text-left transition-colors duration-500 ${
-                  isOpen ? "font-semibold text-[#f3e2a4]" : "text-white"
-                }`}
-              >
-                {item.title}
-                <span
-                  aria-hidden
-                  className={`inline-block transition-transform duration-500 ${
-                    isOpen ? "rotate-90 text-[#f3e2a4]" : "text-white/80"
-                  }`}
-                >
-                  ↗
-                </span>
-              </button>
-              <div
-                className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="pb-3 text-sm leading-7 text-emerald-50">{item.body}</p>
-                </div>
-              </div>
-            </li>
-          );
-        })}
+        {items.map((item) => (
+          <li key={item.title}>
+            <button
+              type="button"
+              onClick={() => setDialog(item.title)}
+              className="flex w-full items-center justify-between py-3 text-left text-white transition-colors duration-500 hover:text-[#f3e2a4]"
+            >
+              <span>{item.title}</span>
+              <span aria-hidden className="shrink-0 pl-3 text-sm font-semibold text-[#f3e2a4]">
+                … see more
+              </span>
+            </button>
+          </li>
+        ))}
       </ul>
+      {dialog ? (
+        <MessageDialog
+          title={items.find((item) => item.title === dialog)?.dialogTitle ?? dialog}
+          onClose={() => setDialog(null)}
+        >
+          {dialog === "Our Vision" ? (
+            <p>
+              To be a dynamic and effective Mission that promotes and protects the interests of the
+              Republic of The Gambia and its citizens, and advances a strong, strategic and enduring
+              partnership between The Gambia and the State of Qatar.
+            </p>
+          ) : null}
+          {dialog === "Our Values" ? (
+            <ul className="list-disc space-y-1 pl-5">
+              {values.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          ) : null}
+          {dialog === "Embassy Mission" ? (
+            <>
+              <p>To implement the foreign policy of the Government of The Gambia in the State of Qatar by:</p>
+              <ol className="list-decimal space-y-2 pl-5">
+                {missionPoints.map(([name, text]) => (
+                  <li key={name}>
+                    <span className="font-semibold text-ink">{name}:</span> {text}
+                  </li>
+                ))}
+              </ol>
+            </>
+          ) : null}
+        </MessageDialog>
+      ) : null}
     </article>
   );
 }
