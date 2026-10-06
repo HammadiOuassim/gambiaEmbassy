@@ -1,14 +1,45 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const highlights = [
-  ["Ambassador Meets Gambian Community", "Doha · Community outreach and consular updates"],
-  ["Consular Services Expanded", "Doha · New appointment slots and document support"],
-  ["24/7 Emergency Support", "Doha · Help available for citizens in urgent need"],
-  ["Mobile consular desk in Al Wakrah", "Doha · Embassy announcement for local appointments"],
-  ["Passport checklist updated", "Doha · New document list for renewal requests"],
-  ["Community cultural evening", "Doha · Family programme for Gambians in Qatar"],
+  {
+    title: "Ambassador Meets Gambian Community",
+    detail: "Doha · Community outreach and consular updates",
+    image: "/news-4.jpg",
+    alt: "Gambian community gathered for a cultural programme",
+  },
+  {
+    title: "Consular Services Expanded",
+    detail: "Doha · New appointment slots and document support",
+    image: "/news-1.jpg",
+    alt: "Embassy staff assisting a citizen at the consular desk",
+  },
+  {
+    title: "24/7 Emergency Support",
+    detail: "Doha · Help available for citizens in urgent need",
+    image: "/card-consular.jpg",
+    alt: "Citizen welcomed at the Embassy reception",
+  },
+  {
+    title: "Mobile consular desk in Al Wakrah",
+    detail: "Doha · Embassy announcement for local appointments",
+    image: "/news-2.jpg",
+    alt: "Diplomatic meeting with the flags of The Gambia and Qatar",
+  },
+  {
+    title: "Passport checklist updated",
+    detail: "Doha · New document list for renewal requests",
+    image: "/news-3.jpg",
+    alt: "Passport renewal documents prepared for a citizen",
+  },
+  {
+    title: "Community cultural evening",
+    detail: "Doha · Family programme for Gambians in Qatar",
+    image: "/card-tourism.jpg",
+    alt: "Cultural gathering in The Gambia",
+  },
 ] as const;
 
 const GAP = 16;
@@ -152,17 +183,17 @@ export function HighlightReel() {
           transform: `translateX(${(rtl ? 1 : -1) * index * step}px)`,
         }}
       >
-        {cards.map(([title, detail], cardIndex) => (
+        {cards.map((item, cardIndex) => (
           <article
-            key={`${title}-${cardIndex}`}
-            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-4 py-4 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+            key={`${item.title}-${cardIndex}`}
+            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
           >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
-              <ImageIcon />
+            <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
+              <Image src={item.image} alt={item.alt} fill sizes="64px" className="object-cover" />
             </span>
             <span className="min-w-0">
-              <span className="block text-sm font-semibold">{title}</span>
-              <span className="block text-xs text-white/70">{detail}</span>
+              <span className="block text-sm font-semibold">{item.title}</span>
+              <span className="block text-xs text-white/70">{item.detail}</span>
             </span>
           </article>
         ))}
@@ -171,12 +202,3 @@ export function HighlightReel() {
   );
 }
 
-function ImageIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <circle cx="8.5" cy="10" r="1.5" />
-      <path d="M21 16l-5-5-9 8" />
-    </svg>
-  );
-}

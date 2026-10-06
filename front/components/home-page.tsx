@@ -75,22 +75,23 @@ export function HomePage() {
     <div className="home-snap">
       <SiteHeader />
       <main>
-        <section className="home-panel hero-stripes relative flex flex-col text-white">
-          <div
-            className="pointer-events-none absolute -top-[121px] -right-[110px] h-[452px] w-[452px] rounded-full border border-[#c9b896]/80"
-            aria-hidden
+        <section className="home-panel relative flex flex-col overflow-hidden text-white">
+          <Image
+            src="/hero-corniche-night.jpg"
+            alt="West Bay skyline at night, seen from the Doha Corniche"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_45%]"
           />
-          <div
-            className="pointer-events-none absolute -top-[52px] -right-[41px] h-[314px] w-[314px] rounded-full border border-[#c9b896]/80"
-            aria-hidden
-          />
-          <div className="relative z-10 mx-auto grid min-h-0 w-full max-w-7xl flex-1 grid-cols-1 items-center gap-6 px-4 py-6 sm:px-6 lg:grid-cols-2">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-black/10" />
+          <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-4 py-6 sm:px-6">
             <div>
               <p className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-white/80">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 OFFICIAL DIPLOMATIC MISSION
               </p>
-              <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
                 Embassy of The Gambia in the State of Qatar
               </h1>
               <p className="mt-4 max-w-lg text-base text-white/80">
@@ -100,37 +101,16 @@ export function HomePage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-embassy"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#CE1126] px-5 py-3 text-sm font-semibold text-white"
                 >
                   Register as Citizen in Qatar
                 </Link>
                 <a
                   href="#services"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#0C1C8C] bg-white px-5 py-3 text-sm font-semibold text-[#0C1C8C]"
                 >
                   Explore Consular Services →
                 </a>
-              </div>
-            </div>
-            <div className="relative aspect-[16/10] w-full max-w-[560px] justify-self-center self-center overflow-hidden rounded-[28px] shadow-2xl lg:justify-self-end">
-              <Image
-                src="/embassy-doha.jpg"
-                alt="Embassy building in the West Bay Diplomatic Area, Doha"
-                fill
-                priority
-                sizes="560px"
-                className="object-cover object-[center_30%]"
-              />
-              <div className="absolute bottom-4 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-3 rounded-2xl bg-white/75 px-3 py-2.5 text-ink shadow-lg backdrop-blur-sm">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e7f6ef] text-embassy">
-                  <PinIcon />
-                </span>
-                <span>
-                  <span className="block text-[10px] font-semibold tracking-[0.16em] text-muted">
-                    EMBASSY IN DOHA
-                  </span>
-                  <span className="block text-sm font-semibold">West Bay Diplomatic Area</span>
-                </span>
               </div>
             </div>
           </div>
@@ -200,13 +180,13 @@ export function HomePage() {
 
         <section id="services" className="home-panel section-gradient text-white">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
-          <p className="text-center text-xs font-semibold tracking-[0.16em] text-emerald-200">
+          <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">
             CONSULAR SERVICES
           </p>
-          <h2 className="mt-2 text-center text-2xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/75">
+          <p className="mt-3 max-w-2xl text-sm text-white/75">
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
@@ -336,7 +316,7 @@ export function HomePage() {
           </div>
         </section>
       </main>
-      <SiteFooter className="home-panel flex flex-col" />
+      <SiteFooter className="home-footer" />
     </div>
   );
 }
@@ -378,7 +358,7 @@ function DiscoverCard({
 }) {
   return (
     <article className="overflow-hidden rounded-3xl bg-white text-ink">
-      <Image src={image} alt="" width={406} height={140} className="h-32 w-full object-cover" />
+      <Image src={image} alt="" width={406} height={220} className="h-48 w-full object-cover sm:h-56" />
       <div className="p-4 sm:p-5">
         <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>
         <h3 className="mt-2 text-lg font-semibold leading-snug sm:text-xl">{title}</h3>

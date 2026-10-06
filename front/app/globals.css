@@ -50,6 +50,11 @@ body {
   overflow: hidden;
 }
 
+.home-footer {
+  scroll-snap-align: end;
+  scroll-snap-stop: always;
+}
+
 @media (max-width: 1023px) {
   body {
     overflow-x: clip;
@@ -68,6 +73,11 @@ body {
     scroll-snap-stop: normal;
     overflow-x: clip;
     overflow-y: visible;
+  }
+
+  .home-footer {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
   }
 }
 
