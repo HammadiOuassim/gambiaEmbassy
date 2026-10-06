@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 type NewsItem = {
@@ -20,7 +20,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
   const [index, setIndex] = useState(0);
   const [step, setStep] = useState(0);
   const [rtl, setRtl] = useState(false);
-  const [animate, setAnimate] = useState(true);
+  const [animate, setAnimate] = useState(false);
   const [visible, setVisible] = useState(1);
   const count = items.length;
   const cards = [...items, ...items.slice(0, visible)];
@@ -47,7 +47,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
     setIndex(0);
   }, [visible]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
     const measure = () => {
@@ -55,6 +55,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
       setStep(card + GAP);
     };
     measure();
+    setAnimate(true);
     const observer = new ResizeObserver(measure);
     observer.observe(el);
     return () => observer.disconnect();
@@ -128,8 +129,6 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
     setIndex(forward ? Math.min(current + 1, count) : current - 1);
   }
 
-  const cardWidth = Math.max(step - GAP, 0);
-
   return (
     <div
       ref={viewportRef}
@@ -155,8 +154,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
         {cards.map((item, cardIndex) => (
           <article
             key={`${item.title}-${cardIndex}`}
-            className="shrink-0 rounded-3xl border border-black/5 bg-[#f6f5f2] p-4 text-ink"
-            style={{ width: cardWidth }}
+            className="w-full shrink-0 rounded-3xl border border-black/5 bg-[#f6f5f2] p-4 text-ink sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
           >
             <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>
             <p className="mt-3 text-xs text-muted">{item.date}</p>

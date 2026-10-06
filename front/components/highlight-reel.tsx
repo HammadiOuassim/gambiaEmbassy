@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const highlights = [
   ["Ambassador Meets Gambian Community", "Doha · Community outreach and consular updates"],
@@ -20,7 +20,7 @@ export function HighlightReel() {
   const [index, setIndex] = useState(0);
   const [step, setStep] = useState(0);
   const [rtl, setRtl] = useState(false);
-  const [animate, setAnimate] = useState(true);
+  const [animate, setAnimate] = useState(false);
   const [visible, setVisible] = useState(1);
   const count = highlights.length;
   const cards = [...highlights, ...highlights.slice(0, visible)];
@@ -47,7 +47,7 @@ export function HighlightReel() {
     setIndex(0);
   }, [visible]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
     const measure = () => {
@@ -57,6 +57,7 @@ export function HighlightReel() {
       setStep(card + GAP);
     };
     measure();
+    setAnimate(true);
     const observer = new ResizeObserver(measure);
     observer.observe(el);
     return () => observer.disconnect();
@@ -154,8 +155,7 @@ export function HighlightReel() {
         {cards.map(([title, detail], cardIndex) => (
           <article
             key={`${title}-${cardIndex}`}
-            className="flex shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-4 py-4"
-            style={{ width: Math.max(step - GAP, 0) }}
+            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-4 py-4 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
               <ImageIcon />
