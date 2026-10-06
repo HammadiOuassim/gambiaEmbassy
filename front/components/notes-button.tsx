@@ -35,6 +35,14 @@ function readLocalNotes(): Note[] {
   }
 }
 
+async function readError(response: Response, fallback: string) {
+  const body: unknown = await response.json().catch(() => null);
+  if (body && typeof body === "object" && typeof (body as { error?: unknown }).error === "string") {
+    return (body as { error: string }).error;
+  }
+  return fallback;
+}
+
 function formatWhen(value: string) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "";
@@ -106,7 +114,7 @@ export function NotesButton() {
         body: JSON.stringify({ text, page: pathname || "/" }),
       });
       if (!response.ok) {
-        setError("The note could not be saved.");
+        setError(await readError(response, "The note could not be saved."));
         return;
       }
       const note: unknown = await response.json();
@@ -126,7 +134,7 @@ export function NotesButton() {
     try {
       const response = await fetch(`/api/notes?id=${encodeURIComponent(id)}`, { method: "DELETE" });
       if (!response.ok) {
-        setError("The note could not be removed.");
+        setError(await readError(response, "The note could not be removed."));
         return;
       }
       const data: unknown = await response.json();
