@@ -17,8 +17,8 @@ export default async function ServicePlaceholderPage({
       <main className="flex flex-1 bg-[#f6f5f2]">
         <div className="mx-auto flex w-full max-w-3xl flex-col justify-center px-4 py-16 sm:px-6">
           <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">CONSULAR SERVICES</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink">{title}</h1>
-          <article className="mt-6 rounded-3xl border border-black/5 bg-white p-8">
+          <h1 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h1>
+          <article className="mt-6 rounded-3xl border border-black/5 bg-white p-5 sm:p-8">
             <p className="text-sm leading-7 text-muted">
               This link does not exist for now. The page for {title} will be added later.
             </p>

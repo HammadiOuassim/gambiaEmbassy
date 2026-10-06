@@ -21,8 +21,9 @@ export function HighlightReel() {
   const [step, setStep] = useState(0);
   const [rtl, setRtl] = useState(false);
   const [animate, setAnimate] = useState(true);
+  const [visible, setVisible] = useState(1);
   const count = highlights.length;
-  const cards = [...highlights, ...highlights.slice(0, 3)];
+  const cards = [...highlights, ...highlights.slice(0, visible)];
 
   useEffect(() => {
     const root = document.documentElement;
@@ -30,19 +31,36 @@ export function HighlightReel() {
   }, []);
 
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const tablet = window.matchMedia("(min-width: 640px)");
+    const update = () => setVisible(desktop.matches ? 3 : tablet.matches ? 2 : 1);
+    update();
+    desktop.addEventListener("change", update);
+    tablet.addEventListener("change", update);
+    return () => {
+      desktop.removeEventListener("change", update);
+      tablet.removeEventListener("change", update);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIndex(0);
+  }, [visible]);
+
+  useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
     const measure = () => {
       const styles = getComputedStyle(el);
       const pad = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
-      const card = (el.clientWidth - pad - GAP * 2) / 3;
+      const card = (el.clientWidth - pad - GAP * (visible - 1)) / visible;
       setStep(card + GAP);
     };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -142,7 +160,7 @@ export function HighlightReel() {
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
               <ImageIcon />
             </span>
-            <span>
+            <span className="min-w-0">
               <span className="block text-sm font-semibold">{title}</span>
               <span className="block text-xs text-white/70">{detail}</span>
             </span>

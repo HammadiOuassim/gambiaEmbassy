@@ -38,7 +38,7 @@ export default function PortalPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <Link href="/" className="flex items-center gap-2">
             <Crest className="h-9 w-9" />
-            <span>
+            <span className="hidden sm:block">
               <span className="block text-xs font-semibold tracking-wide text-embassy">
                 EMBASSY OF THE GAMBIA
               </span>
@@ -63,13 +63,14 @@ export default function PortalPage() {
         </div>
       </header>
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 lg:grid-cols-[220px_1fr] sm:px-6">
-        <aside className="space-y-1">
+        <aside>
+          <div className="flex gap-2 overflow-x-auto pb-1 lg:block lg:space-y-1 lg:overflow-visible lg:pb-0">
           {nav.map((item) => (
             <button
               key={item}
               type="button"
               onClick={() => setSection(item)}
-              className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm ${
+              className={`flex w-auto shrink-0 items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-sm whitespace-nowrap lg:w-full ${
                 section === item ? "bg-emerald-50 font-medium text-embassy" : "text-ink/80"
               }`}
             >
@@ -79,7 +80,8 @@ export default function PortalPage() {
               )}
             </button>
           ))}
-          <div className="mt-8 rounded-2xl bg-embassy p-4 text-sm text-white">
+          </div>
+          <div className="mt-4 rounded-2xl bg-embassy p-4 text-sm text-white lg:mt-8">
             <p className="font-semibold">Emergency support</p>
             <p className="mt-1 text-xs text-white/75">For urgent citizen welfare support in Qatar.</p>
             <p className="mt-3 font-medium">+974 4486 7117</p>

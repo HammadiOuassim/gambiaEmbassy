@@ -12,7 +12,6 @@ type NewsItem = {
 };
 
 const GAP = 16;
-const VISIBLE = 4;
 
 export function NewsReel({ items }: { items: NewsItem[] }) {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -22,8 +21,9 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
   const [step, setStep] = useState(0);
   const [rtl, setRtl] = useState(false);
   const [animate, setAnimate] = useState(true);
+  const [visible, setVisible] = useState(1);
   const count = items.length;
-  const cards = [...items, ...items.slice(0, VISIBLE)];
+  const cards = [...items, ...items.slice(0, visible)];
 
   useEffect(() => {
     const root = document.documentElement;
@@ -31,26 +31,43 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
   }, []);
 
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const tablet = window.matchMedia("(min-width: 640px)");
+    const update = () => setVisible(desktop.matches ? 4 : tablet.matches ? 2 : 1);
+    update();
+    desktop.addEventListener("change", update);
+    tablet.addEventListener("change", update);
+    return () => {
+      desktop.removeEventListener("change", update);
+      tablet.removeEventListener("change", update);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIndex(0);
+  }, [visible]);
+
+  useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
     const measure = () => {
-      const card = (el.clientWidth - GAP * (VISIBLE - 1)) / VISIBLE;
+      const card = (el.clientWidth - GAP * (visible - 1)) / visible;
       setStep(card + GAP);
     };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || count <= VISIBLE) return;
+    if (reduced || count <= visible) return;
     const timer = window.setInterval(() => {
       setIndex((current) => (current >= count ? current : current + 1));
     }, 4000);
     return () => window.clearInterval(timer);
-  }, [count]);
+  }, [count, visible]);
 
   useEffect(() => {
     if (index < count) return;
@@ -66,7 +83,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
 
   useEffect(() => {
     const el = viewportRef.current;
-    if (!el || count <= VISIBLE) return;
+    if (!el || count <= visible) return;
     let locked = false;
     const onWheel = (event: WheelEvent) => {
       const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
@@ -92,12 +109,12 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [count, rtl]);
+  }, [count, rtl, visible]);
 
   indexRef.current = index;
 
   function move(forward: boolean) {
-    if (count <= VISIBLE) return;
+    if (count <= visible) return;
     const current = indexRef.current;
     if (!forward && current <= 0) {
       setAnimate(false);

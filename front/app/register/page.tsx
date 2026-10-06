@@ -52,7 +52,7 @@ export default function RegisterPage() {
         <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">CITIZEN SERVICES</p>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight">
+            <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               Register as a Gambian citizen in Qatar
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted">
@@ -88,13 +88,13 @@ export default function RegisterPage() {
           <div className="mt-8 grid gap-5 lg:grid-cols-[240px_1fr_280px]">
             <aside className="rounded-3xl bg-white p-5">
               <p className="text-sm font-semibold">Your registration</p>
-              <ol className="mt-4 space-y-3">
+              <ol className="mt-4 flex gap-3 overflow-x-auto lg:block lg:space-y-3">
                 {steps.map((label, index) => (
                   <li key={label}>
                     <button
                       type="button"
                       onClick={() => setStep(index)}
-                      className="flex w-full items-center gap-3 text-left text-sm"
+                      className="flex w-auto shrink-0 items-center gap-3 text-left text-sm whitespace-nowrap lg:w-full"
                     >
                       <span
                         className={`flex h-7 w-7 items-center justify-center rounded-full text-xs ${
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                   onSignature={setSignature}
                 />
               )}
-              <div className="mt-8 flex items-center justify-between">
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
                   disabled={step === 0}
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                 >
                   ← Back
                 </button>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
                     onClick={() => setSaved("Last saved just now")}

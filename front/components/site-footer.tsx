@@ -24,7 +24,7 @@ export function SiteFooter({ className = "" }: { className?: string }) {
           </Link>
         </div>
       </div>
-      <div className="mx-auto grid min-h-0 flex-1 max-w-7xl gap-6 overflow-hidden px-4 py-6 sm:px-6 md:grid-cols-5">
+      <div className="mx-auto grid min-h-0 max-w-7xl gap-6 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:min-h-0 lg:flex-1 lg:grid-cols-5 lg:overflow-hidden">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
             <Crest className="h-9 w-9" />

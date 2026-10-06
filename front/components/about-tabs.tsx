@@ -52,7 +52,7 @@ export function AboutTabs() {
   }, [tab, images]);
 
   return (
-    <article className="relative overflow-hidden rounded-3xl p-8 text-white">
+    <article className="relative min-h-80 overflow-hidden rounded-3xl p-5 text-white sm:p-8">
       {images.map((image, index) => (
         <Image
           key={image.src}

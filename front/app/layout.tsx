@@ -8,6 +8,11 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Embassy of The Gambia in the State of Qatar",
   description:

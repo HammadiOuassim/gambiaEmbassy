@@ -90,7 +90,7 @@ export function HomePage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 OFFICIAL DIPLOMATIC MISSION
               </p>
-              <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
                 Embassy of The Gambia in the State of Qatar
               </h1>
               <p className="mt-4 max-w-lg text-base text-white/80">
@@ -112,7 +112,7 @@ export function HomePage() {
                 </a>
               </div>
             </div>
-            <div className="relative aspect-[16/10] w-full max-w-[560px] justify-self-end self-center overflow-hidden rounded-[28px] shadow-2xl">
+            <div className="relative aspect-[16/10] w-full max-w-[560px] justify-self-center self-center overflow-hidden rounded-[28px] shadow-2xl lg:justify-self-end">
               <Image
                 src="/embassy-doha.jpg"
                 alt="Embassy building in the West Bay Diplomatic Area, Doha"
@@ -142,7 +142,7 @@ export function HomePage() {
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               AMBASSADOR&apos;S MESSAGE
             </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
               A warm welcome from the Ambassador
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-muted">
@@ -181,7 +181,7 @@ export function HomePage() {
               <h2 className="text-xl font-semibold">Embassy Staff</h2>
               <p className="hidden text-sm text-muted sm:block">The people serving citizens and partners</p>
             </div>
-            <div className="mt-3 grid grid-cols-5 gap-3">
+            <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
               {staff.map((role, index) => (
                 <article
                   key={`${role}-${index}`}
@@ -205,7 +205,7 @@ export function HomePage() {
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               THE NATION AND THE EMBASSY
             </p>
-            <h2 className="mt-2 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
               Know The Gambia, and the Embassy that serves it in Qatar
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted">
@@ -225,14 +225,14 @@ export function HomePage() {
           <p className="text-center text-xs font-semibold tracking-[0.16em] text-emerald-200">
             CONSULAR SERVICES
           </p>
-          <h2 className="mt-2 text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="mt-2 text-center text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/75">
             Start with the service you need. Each guide includes eligibility, required documents,
             fees and appointment information.
           </p>
-          <div className="mx-auto mt-6 grid w-full max-w-6xl grid-cols-4 gap-3">
+          <div className="mx-auto mt-6 grid w-full max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {services.map((service) => (
               <article key={service.title} className="min-w-0 rounded-2xl border border-black/5 bg-white p-4 text-ink">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
@@ -271,14 +271,14 @@ export function HomePage() {
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               DISCOVER THE GAMBIA
             </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
               A destination for partnership and exploration
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-muted">
               Practical resources for investors, businesses and travellers building meaningful
               connections with The Gambia.
             </p>
-            <div className="mt-6 grid min-h-0 flex-1 grid-cols-3 gap-5 overflow-hidden">
+            <div className="mt-6 grid min-h-0 flex-1 grid-cols-1 gap-5 md:grid-cols-3 lg:overflow-hidden">
               <DiscoverCard
                 image="/card-trade.png"
                 kicker="TRADE & INVESTMENT"
@@ -308,14 +308,14 @@ export function HomePage() {
         <section id="location" className="home-panel section-gradient flex flex-col text-white">
           <div className="mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">EMBASSY LOCATION</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
               Find the Embassy in Doha
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-white/75">
               Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
               services and appointments.
             </p>
-            <div className="relative mt-6 min-h-0 flex-1 overflow-hidden rounded-[28px] bg-[#f3efe4]">
+            <div className="relative mt-6 min-h-72 flex-1 overflow-hidden rounded-[28px] bg-[#f3efe4] lg:min-h-0">
               <iframe
                 title="Embassy of The Gambia in the West Bay Diplomatic Area, Doha"
                 src="https://maps.google.com/maps?q=West+Bay+Diplomatic+Area,+Doha,+Qatar&z=15&hl=en&output=embed"
@@ -323,7 +323,7 @@ export function HomePage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute bottom-4 left-4 flex max-w-sm items-center gap-3 rounded-2xl bg-white px-4 py-3 text-ink shadow-sm">
+              <div className="absolute right-4 bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-ink shadow-sm sm:right-auto sm:max-w-sm">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-embassy text-white">
                   <PinIcon />
                 </span>
@@ -348,7 +348,7 @@ function NewsSection() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-semibold tracking-[0.16em] text-emerald-200">LATEST UPDATES</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight">News & announcements</h2>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">News & announcements</h2>
           <p className="mt-2 text-sm text-white/75">Verified updates from the Embassy and community.</p>
         </div>
         <a href="#news" className="rounded-full border border-white/30 px-4 py-2 text-sm">
@@ -379,9 +379,9 @@ function DiscoverCard({
   return (
     <article className="overflow-hidden rounded-3xl bg-white text-ink">
       <Image src={image} alt="" width={406} height={140} className="h-32 w-full object-cover" />
-      <div className="p-5">
+      <div className="p-4 sm:p-5">
         <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>
-        <h3 className="mt-2 text-xl font-semibold leading-snug">{title}</h3>
+        <h3 className="mt-2 text-lg font-semibold leading-snug sm:text-xl">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (

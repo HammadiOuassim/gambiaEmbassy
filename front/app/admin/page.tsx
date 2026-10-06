@@ -46,13 +46,13 @@ export default function AdminPage() {
             </span>
           </Link>
           <p className="mt-8 text-[11px] tracking-[0.16em] text-white/50">CONSULAR ADMINISTRATION</p>
-          <nav className="mt-3 space-y-1">
+          <nav className="mt-3 flex gap-2 overflow-x-auto lg:block lg:space-y-1">
             {menu.map((item) => (
               <button
                 key={item}
                 type="button"
                 onClick={() => setSection(item)}
-                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm ${
+                className={`flex w-auto shrink-0 items-center justify-between gap-2 rounded-xl px-3 py-2 text-left text-sm whitespace-nowrap lg:w-full ${
                   section === item ? "bg-white/10" : "text-white/75"
                 }`}
               >
@@ -73,7 +73,7 @@ export default function AdminPage() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Quick search citizens, QID, requests..."
-              className="min-w-64 flex-1 rounded-full border border-black/10 px-4 py-2 text-sm outline-none"
+              className="w-full min-w-0 flex-1 rounded-full border border-black/10 px-4 py-2 text-sm outline-none sm:min-w-64"
             />
             <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-800">
               Encrypted Session

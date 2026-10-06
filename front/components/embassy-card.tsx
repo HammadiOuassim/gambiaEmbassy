@@ -23,7 +23,7 @@ export function EmbassyCard() {
   return (
     <article
       id="embassy"
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#146b4e] via-[#0a3a2c] to-[#04261d] p-8 text-white"
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#146b4e] via-[#0a3a2c] to-[#04261d] p-5 text-white sm:p-8"
     >
       <div
         className="absolute inset-x-0 top-0 h-1.5"
