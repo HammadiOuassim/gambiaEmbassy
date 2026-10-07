@@ -30,16 +30,21 @@ export function EmbassyCard() {
   return (
     <article
       id="embassy"
-      className="relative h-full min-h-0 overflow-y-auto rounded-3xl bg-[#cccccc] p-5 text-ink [scrollbar-width:none] sm:p-8 [&::-webkit-scrollbar]:hidden"
+      className={`relative h-full min-h-0 rounded-3xl bg-[#cccccc] text-ink ${
+        open
+          ? "overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          : "overflow-hidden"
+      }`}
     >
       <div
-        className="absolute inset-x-0 top-0 h-1.5"
+        className="sticky top-0 z-10 h-1.5"
         style={{
           background:
             "linear-gradient(90deg, #CE1126 0 30%, #ffffff 30% 34%, #0C1C8C 34% 66%, #ffffff 66% 70%, #3A7728 70% 100%)",
         }}
         aria-hidden
       />
+      <div className="p-5 sm:p-8">
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-semibold">About The Embassy</h3>
         <span className="text-embassy">
@@ -76,7 +81,7 @@ export function EmbassyCard() {
                   isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                <div className="overflow-hidden">
+                <div className="min-h-0 overflow-hidden">
                   <div className="pb-3 text-sm leading-7 text-ink/80">{itemBody(item.title)}</div>
                 </div>
               </div>
@@ -84,6 +89,7 @@ export function EmbassyCard() {
           );
         })}
       </ul>
+      </div>
     </article>
   );
 }
