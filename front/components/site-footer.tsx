@@ -3,7 +3,7 @@ import { Crest } from "@/components/crest";
 
 export function SiteFooter({ className = "" }: { className?: string }) {
   return (
-    <footer className={`overflow-hidden bg-embassy-deep text-white ${className}`}>
+    <footer className={`overflow-hidden bg-[#2c2926] text-white ${className}`}>
       <div className="bg-[#0e5c48]">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-4 py-4 sm:px-6 md:flex-row md:items-center">
           <div>
@@ -25,17 +25,17 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         </div>
       </div>
       <div className="h-1.5 bg-white" />
-      <div className="bg-[#8c8c8c] text-ink">
+      <div className="bg-[#2c2926] text-white">
       <div className="mx-auto grid w-full max-w-7xl gap-x-6 gap-y-4 px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-5">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
             <Crest className="h-9 w-9" />
             <span>
               <span className="block text-xs font-semibold tracking-wide">EMBASSY OF THE GAMBIA</span>
-              <span className="block text-[11px] text-ink">DOHA · STATE OF QATAR</span>
+              <span className="block text-[11px] text-white/60">DOHA · STATE OF QATAR</span>
             </span>
           </div>
-          <p className="mt-4 text-sm text-ink">
+          <p className="mt-4 text-sm text-white/70">
             Serving Gambian citizens and strengthening relations between The Gambia and the State of
             Qatar.
           </p>
@@ -46,10 +46,10 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         />
         <div>
           <h3 className="text-sm font-semibold">Consular Hours</h3>
-          <p className="mt-2 text-sm leading-5 text-ink">Sunday–Thursday</p>
-          <p className="text-sm leading-5 text-ink">08:30–14:00</p>
-          <p className="mt-1.5 text-sm leading-5 text-ink">Friday–Saturday: Closed</p>
-          <p className="mt-1.5 text-sm font-medium text-embassy">Support/helpline visual</p>
+          <p className="mt-2 text-sm leading-5 text-white/70">Sunday–Thursday</p>
+          <p className="text-sm leading-5 text-white/70">08:30–14:00</p>
+          <p className="mt-1.5 text-sm leading-5 text-white/70">Friday–Saturday: Closed</p>
+          <p className="mt-1.5 text-sm font-medium text-white">Support/helpline visual</p>
         </div>
         <FooterCol
           title="Quick Links"
@@ -63,8 +63,8 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         />
       </div>
       </div>
-      <div className="bg-[#8c8c8c] text-ink">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 border-t border-black/10 px-4 py-3 text-xs sm:px-6 md:flex-row md:justify-between">
+      <div className="bg-[#2c2926] text-white/60">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 border-t border-white/10 px-4 py-3 text-xs sm:px-6 md:flex-row md:justify-between">
           <p>© 2026 Embassy of The Gambia in Doha. Official government service.</p>
           <p>Secure · Accessible · Privacy-respecting</p>
         </div>
@@ -85,11 +85,11 @@ function FooterCol({
   return (
     <div>
       <h3 className="text-sm font-semibold">{title}</h3>
-      <ul className="mt-2 space-y-1.5 text-sm leading-5 text-ink">
+      <ul className="mt-2 space-y-1.5 text-sm leading-5 text-white/70">
         {lines.map((line, index) => (
           <li key={line}>
             {hrefs ? (
-              <Link href={hrefs[index]} className="hover:text-embassy">
+              <Link href={hrefs[index]} className="hover:text-white">
                 {line}
               </Link>
             ) : (
