@@ -8,37 +8,19 @@ const highlights = [
     title: "H.E. Ambassador with Gambian community in Doha",
     detail: "Doha · Community gathering",
     image: "/news-4.jpg",
-    alt: "H.E. the Ambassador with the Gambian community in Doha",
+    alt: "Gambian community gathered for a cultural programme",
   },
   {
-    title: "Consular Services Expanded",
+    title: "Staff assisting a citizen",
     detail: "Doha · New appointment slots and document support",
     image: "/news-1.jpg",
     alt: "Embassy staff assisting a citizen at the consular desk",
   },
   {
-    title: "24/7 Emergency Support",
+    title: "Support/helpline visual",
     detail: "Doha · Help available for citizens in urgent need",
     image: "/card-consular.jpg",
     alt: "Citizen welcomed at the Embassy reception",
-  },
-  {
-    title: "Mobile consular desk in Al Wakrah",
-    detail: "Doha · Embassy announcement for local appointments",
-    image: "/news-2.jpg",
-    alt: "Diplomatic meeting with the flags of The Gambia and Qatar",
-  },
-  {
-    title: "Passport checklist updated",
-    detail: "Doha · New document list for renewal requests",
-    image: "/news-3.jpg",
-    alt: "Passport renewal documents prepared for a citizen",
-  },
-  {
-    title: "Community cultural evening",
-    detail: "Doha · Family programme for Gambians in Qatar",
-    image: "/card-tourism.jpg",
-    alt: "Cultural gathering in The Gambia",
   },
 ] as const;
 

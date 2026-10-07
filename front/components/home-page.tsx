@@ -5,39 +5,99 @@ import { SiteHeader } from "@/components/site-header";
 import { AboutTabs } from "@/components/about-tabs";
 import { AmbassadorMessage } from "@/components/ambassador-message";
 import { EmbassyCard } from "@/components/embassy-card";
+import { ConsularCardRow } from "@/components/consular-card-row";
 import { HighlightReel } from "@/components/highlight-reel";
 import { NewsReel } from "@/components/news-reel";
-import { serviceSlug } from "@/lib/service-links";
-
 const staff = [
-  "Consular Officer",
+  "Ambassador",
   "Deputy Head of Mission",
   "Consular Officer",
   "Trade & Investment Officer",
   "Administrative Officer",
 ];
 
-const services = [
+const consularGuide = [
   {
-    title: "Passport & Travel Documents",
-    body: "Issuance, renewal and Emergency Travel Certificates for Gambian citizens.",
-    items: ["Passport issuance", "Passport renewal", "Emergency travel"],
+    title: "Travel Document Assistance",
+    body: "The Embassy provides guidance to Gambian nationals concerning lost or stolen passports and other travel-document matters.",
+    note: "The Embassy does not issue or renew Gambian passports. Passport issuance and renewal are handled by the competent authorities in The Gambia.",
   },
   {
-    title: "Visas & Entry Regulations",
-    body: "Clear guidance for visitors, residents and official delegations travelling to The Gambia.",
-    items: ["Visa requirements", "Entry regulations", "Application guidance"],
+    title: "Visa and Entry Requirements",
+    body: "The Embassy provides information and guidance on visa requirements, entry-clearance procedures, visa exemptions, and supporting documents for travel to The Gambia.",
+  },
+  {
+    title: "Certificates and Document Assistance",
+    body: "The Embassy provides guidance on obtaining certificates, official records, Certificate of Character, and document attestation or authentication, where applicable.",
   },
   {
     title: "Civil Registration",
-    body: "Secure registration of vital events and official document legalisation.",
-    items: ["Birth registration", "Marriage registration", "Legalisation & attestation"],
+    body: "The Embassy provides guidance on matters relating to birth, marriage, death registration, and other civil-status documentation involving Gambian nationals.",
   },
+  {
+    title: "Consular Assistance",
+    body: "The Embassy provides appropriate assistance and guidance to Gambian nationals facing difficulties in Qatar, including cases involving detention, hospitalization, lost documents, or other emergencies, within the limits of its mandate.",
+  },
+  {
+    title: "Death and Repatriation Assistance",
+    body: "In cases involving the death of a Gambian national in Qatar, the Embassy provides guidance and facilitates communication with the relevant authorities and family members concerning local procedures or repatriation of remains.",
+  },
+] as const;
+
+const services = [
+  {
+    title: "Passport & Travel Documents",
+    body: consularGuide[0].body,
+    note: consularGuide[0].note,
+    items: ["Lost or stolen passport", "Travel-document guidance", "Emergency travel"],
+  },
+  {
+    title: "Visas & Entry Regulations",
+    body: consularGuide[1].body,
+    items: ["Visa requirements", "Entry regulations", "Visa exemptions", "Supporting documents"],
+  },
+  {
+    title: "Certificates and Document Assistance",
+    body: consularGuide[2].body,
+    items: ["Certificates", "Official records", "Certificate of Character", "Attestation or authentication"],
+  },
+  {
+    title: "Civil Registration",
+    body: consularGuide[3].body,
+    items: ["Birth registration", "Marriage registration", "Death registration", "Civil-status documents"],
+  },
+  {
+    title: "Consular Assistance",
+    body: consularGuide[4].body,
+    items: ["Detention", "Hospitalization", "Lost documents", "Other emergencies"],
+  },
+  {
+    title: "Death and Repatriation Assistance",
+    body: consularGuide[5].body,
+    items: ["Local procedures", "Authorities and family", "Repatriation of remains"],
+  },
+  /* Kept for later: Other Consular Services, General Requirements, and Contact cards.
   {
     title: "Other Consular Services",
     body: "Citizen welfare, notarial support and referrals for the Gambian community in Qatar.",
     items: ["Notarial services", "Citizen welfare", "Official letters"],
   },
+  {
+    title: "General Requirements",
+    body: "Requirements vary depending on the service requested. Applicants may be required to provide valid identification, supporting documents, photographs, application forms, and applicable fees.",
+    note: "Members of the public are advised to contact the Embassy in advance to confirm the applicable requirements and procedures.",
+  },
+  {
+    title: "Contact",
+    body: "Embassy of the Republic of The Gambia in the State of Qatar",
+    contacts: [
+      { label: "Telephone", value: "+974 4465 2002", href: "tel:+97444652002" },
+      { label: "Email", value: "gambiaembassydoha@gmail.com", href: "mailto:gambiaembassydoha@gmail.com" },
+      { label: "Office Hours", value: "Sunday–Thursday, 8:00 AM–4:00 PM" },
+      { label: "Location", value: "Doha, State of Qatar" },
+    ],
+  },
+  */
 ];
 
 const news = [
@@ -78,21 +138,21 @@ export function HomePage() {
       <main>
         <section className="home-panel relative flex flex-col overflow-hidden text-white">
           <Image
-            src="/hero-corniche-night.jpg"
-            alt="West Bay skyline at night, seen from the Doha Corniche"
+            src="/hero-doha-westbay-dusk.jpg"
+            alt="West Bay skyline in Doha at dusk, across the water"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[center_45%]"
+            className="object-cover object-[center_38%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/5" />
           <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-4 py-6 sm:px-6">
-            <div>
+            <div className="-translate-y-8">
               <p className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-white/80">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 OFFICIAL DIPLOMATIC MISSION
               </p>
-              <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl">
                 Embassy of The Gambia in the State of Qatar
               </h1>
               <p className="mt-4 max-w-lg text-base text-white/80">
@@ -118,78 +178,64 @@ export function HomePage() {
           <HighlightReel />
         </section>
 
-        <section className="home-panel bg-[#f6f5f2]">
-          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col justify-center px-4 py-6 sm:px-6">
+        <section className="home-panel !overflow-y-auto bg-[#f6f5f2] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               AMBASSADOR&apos;S MESSAGE
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
               A warm welcome from the Ambassador
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-muted">
-              A message for Gambian citizens and partners in Qatar, and the team that delivers it.
+            <p className="mt-2 max-w-3xl text-sm text-muted">
+              Meet the Ambassador and learn more about the Embassy&apos;s commitment to Gambian
+              citizens and partners in Qatar.
             </p>
-            <div className="mt-6 grid items-stretch gap-5 sm:grid-cols-[168px_1fr]">
-              <div className="flex h-full min-h-40 items-center justify-center rounded-3xl border border-black/5 bg-white">
-                <span className="flex h-28 w-28 items-center justify-center rounded-full bg-stone-200 text-stone-700">
-                  <PersonIcon className="h-16 w-16" />
+            <div className="mt-6 grid items-start gap-5 md:grid-cols-[240px_1fr]">
+              <div className="flex min-h-52 items-center justify-center rounded-3xl border border-black/5 bg-white p-6">
+                <span className="flex h-40 w-40 items-center justify-center rounded-full bg-[#d9d9d9] text-stone-800">
+                  <PersonIcon className="h-24 w-24" />
                 </span>
               </div>
               <AmbassadorMessage />
             </div>
-            <div className="mt-6 flex items-end justify-between gap-4">
-              <h2 className="text-xl font-semibold">Embassy Staff</h2>
-              <p className="hidden text-sm text-muted sm:block">The people serving citizens and partners</p>
+            <div className="mt-8 flex items-end justify-between gap-4">
+              <h2 className="text-xl font-semibold text-ink">Embassy Staff</h2>
+              <p className="text-right text-sm text-muted">Meet the team supporting citizens and partners</p>
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              {staff.map((role, index) => (
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {staff.map((role) => (
                 <article
-                  key={`${role}-${index}`}
-                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-4 text-center text-ink"
+                  key={role}
+                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-6 text-center text-ink"
                 >
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-stone-200">
-                    <PersonIcon />
+                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e4e4e4] text-stone-700">
+                    <PersonIcon className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-3 text-sm font-semibold">Full Name</h3>
-                  <p className="text-xs leading-5 text-muted">{role}</p>
+                  <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
+                  <p className="mt-1 text-xs leading-5 text-muted">{role}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="services" className="home-panel section-stone text-ink">
-          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
+        <section
+          id="services"
+          className="home-panel section-stone !overflow-y-auto text-ink [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <div className="mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
           <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
-            STAFF ASSISTING A CITIZEN
+            Consular services
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
           </h2>
-          <p className="mt-3 max-w-2xl text-sm text-muted">
-            Start with the service you need. Each guide includes eligibility, required documents,
-            fees and appointment information.
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+            The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+            assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+            information to foreign nationals travelling to The Gambia.
           </p>
-          <div className="mx-auto mt-6 flex w-full max-w-6xl gap-3 overflow-x-auto md:grid md:grid-cols-4 md:overflow-visible">
-            {services.map((service) => (
-              <article key={service.title} className="w-56 shrink-0 rounded-2xl border border-black/5 bg-white p-4 text-ink md:w-auto md:min-w-0">
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
-                  <BuildingIcon />
-                </span>
-                <h3 className="mt-3 text-sm font-semibold leading-snug">{service.title}</h3>
-                <p className="mt-2 text-xs leading-5 text-muted">{service.body}</p>
-                <ul className="mt-3 space-y-1 text-xs text-embassy">
-                  {service.items.map((item) => (
-                    <li key={item}>
-                      <Link href={`/services/${serviceSlug(item)}`} className="hover:underline">
-                        → {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
+          <ConsularCardRow cards={services} />
           <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-sand px-5 py-4 sm:flex-row sm:items-center">
             <p className="text-sm text-ink/80">
               Unsure which service applies? Our consular team can help you choose the right route.
@@ -201,6 +247,84 @@ export function HomePage() {
               Contact Consular Desk
             </a>
           </div>
+
+          {/* Kept for later: full consular write-up below the cards.
+          <div className="mt-8 border-t border-black/10 pt-8">
+            <p className="max-w-3xl text-sm leading-7 text-ink">
+              The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+              assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+              information to foreign nationals travelling to The Gambia.
+            </p>
+
+            <h3 className="mt-8 text-lg font-semibold tracking-tight">Services Provided</h3>
+            <ol className="mt-4 grid gap-3 md:grid-cols-2">
+              {consularGuide.map((item, index) => (
+                <li key={item.title} className="rounded-2xl bg-white p-4">
+                  <div className="flex gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-embassy text-sm font-semibold text-white">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h4 className="text-sm font-semibold">{item.title}</h4>
+                      <p className="mt-1 text-sm leading-6 text-muted">{item.body}</p>
+                      {"note" in item ? (
+                        <p className="mt-2 border-l-2 border-embassy pl-3 text-sm leading-6 text-ink">
+                          {item.note}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-4 rounded-2xl bg-white px-5 py-4">
+              <h3 className="text-sm font-semibold">General Requirements</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                Requirements vary depending on the service requested. Applicants may be required to
+                provide valid identification, supporting documents, photographs, application forms,
+                and applicable fees.
+              </p>
+              <p className="mt-2 text-sm leading-6 text-ink">
+                Members of the public are advised to contact the Embassy in advance to confirm the
+                applicable requirements and procedures.
+              </p>
+            </div>
+
+            <div className="mt-4 rounded-2xl bg-embassy px-5 py-5 text-white">
+              <h3 className="text-sm font-semibold">Contact</h3>
+              <p className="mt-1 text-sm text-white/80">
+                Embassy of the Republic of The Gambia in the State of Qatar
+              </p>
+              <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <dt className="text-xs tracking-wide text-white/60">Telephone</dt>
+                  <dd className="mt-1 text-sm font-medium">
+                    <a href="tel:+97444652002" className="hover:underline">
+                      +974 4465 2002
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs tracking-wide text-white/60">Email</dt>
+                  <dd className="mt-1 text-sm font-medium">
+                    <a href="mailto:gambiaembassydoha@gmail.com" className="hover:underline">
+                      gambiaembassydoha@gmail.com
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs tracking-wide text-white/60">Office Hours</dt>
+                  <dd className="mt-1 text-sm font-medium">Sunday–Thursday, 8:00 AM–4:00 PM</dd>
+                </div>
+                <div>
+                  <dt className="text-xs tracking-wide text-white/60">Location</dt>
+                  <dd className="mt-1 text-sm font-medium">Doha, State of Qatar</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          */}
           </div>
         </section>
 

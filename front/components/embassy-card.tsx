@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { MessageDialog } from "@/components/message-dialog";
 
 const items = [
-  { title: "Our Vision", dialogTitle: "Our Vision" },
-  { title: "Our Values", dialogTitle: "Our Core Values" },
-  { title: "Embassy Mission", dialogTitle: "Our Mission" },
+  { title: "Our Vision" },
+  { title: "Our Values" },
+  { title: "Embassy Mission" },
 ] as const;
 
 const missionPoints = [
@@ -26,12 +25,12 @@ const values = [
 ] as const;
 
 export function EmbassyCard() {
-  const [dialog, setDialog] = useState<(typeof items)[number]["title"] | null>(null);
+  const [open, setOpen] = useState<(typeof items)[number]["title"] | null>(null);
 
   return (
     <article
       id="embassy"
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#146b4e] via-[#0a3a2c] to-[#04261d] p-5 text-white sm:p-8"
+      className="relative h-full min-h-0 overflow-y-auto rounded-3xl bg-[#cccccc] p-5 text-ink [scrollbar-width:none] sm:p-8 [&::-webkit-scrollbar]:hidden"
     >
       <div
         className="absolute inset-x-0 top-0 h-1.5"
@@ -43,64 +42,82 @@ export function EmbassyCard() {
       />
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-semibold">About The Embassy</h3>
-        <span className="text-[#f3e2a4]">
+        <span className="text-embassy">
           <BuildingIcon />
         </span>
       </div>
-      <p className="mt-4 rounded-2xl border-l-4 border-[#f3e2a4] bg-white/10 px-4 py-3 text-sm leading-7 text-emerald-50">
+      <p className="mt-4 rounded-2xl border-l-4 border-embassy bg-white px-4 py-3 text-sm leading-7 text-muted">
         “Our Embassy is a home away from home for Gambians and a bridge for enduring cooperation
         with the State of Qatar.”
       </p>
-      <ul className="mt-6 divide-y divide-white/15 text-sm">
-        {items.map((item) => (
-          <li key={item.title}>
-            <button
-              type="button"
-              onClick={() => setDialog(item.title)}
-              className="flex w-full items-center justify-between py-3 text-left text-white transition-colors duration-500 hover:text-[#f3e2a4]"
-            >
-              <span>{item.title}</span>
-              <span aria-hidden className="shrink-0 pl-3 text-sm font-semibold text-[#f3e2a4]">
-                … see more
-              </span>
-            </button>
-          </li>
+      <ul className="mt-6 divide-y divide-black/10 text-sm">
+        {items.map((item) => {
+          const isOpen = open === item.title;
+          return (
+            <li key={item.title}>
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                onClick={() => setOpen(isOpen ? null : item.title)}
+                className="flex w-full items-center justify-between py-3 text-left text-ink transition-colors duration-300 hover:text-embassy"
+              >
+                <span>{item.title}</span>
+                <span
+                  aria-hidden
+                  className={`inline-block text-embassy transition-transform duration-300 ${
+                    isOpen ? "rotate-90" : ""
+                  }`}
+                >
+                  ↗
+                </span>
+              </button>
+              <div
+                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="pb-3 text-sm leading-7 text-ink/80">{itemBody(item.title)}</div>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </article>
+  );
+}
+
+function itemBody(title: (typeof items)[number]["title"]) {
+  if (title === "Our Vision") {
+    return (
+      <p>
+        To be a dynamic and effective Mission that promotes and protects the interests of the
+        Republic of The Gambia and its citizens, and advances a strong, strategic and enduring
+        partnership between The Gambia and the State of Qatar.
+      </p>
+    );
+  }
+  if (title === "Our Values") {
+    return (
+      <ul className="list-disc space-y-1 pl-5">
+        {values.map((value) => (
+          <li key={value}>{value}</li>
         ))}
       </ul>
-      {dialog ? (
-        <MessageDialog
-          title={items.find((item) => item.title === dialog)?.dialogTitle ?? dialog}
-          onClose={() => setDialog(null)}
-        >
-          {dialog === "Our Vision" ? (
-            <p>
-              To be a dynamic and effective Mission that promotes and protects the interests of the
-              Republic of The Gambia and its citizens, and advances a strong, strategic and enduring
-              partnership between The Gambia and the State of Qatar.
-            </p>
-          ) : null}
-          {dialog === "Our Values" ? (
-            <ul className="list-disc space-y-1 pl-5">
-              {values.map((value) => (
-                <li key={value}>{value}</li>
-              ))}
-            </ul>
-          ) : null}
-          {dialog === "Embassy Mission" ? (
-            <>
-              <p>To implement the foreign policy of the Government of The Gambia in the State of Qatar by:</p>
-              <ol className="list-decimal space-y-2 pl-5">
-                {missionPoints.map(([name, text]) => (
-                  <li key={name}>
-                    <span className="font-semibold text-ink">{name}:</span> {text}
-                  </li>
-                ))}
-              </ol>
-            </>
-          ) : null}
-        </MessageDialog>
-      ) : null}
-    </article>
+    );
+  }
+  return (
+    <>
+      <p>To implement the foreign policy of the Government of The Gambia in the State of Qatar by:</p>
+      <ol className="mt-2 list-decimal space-y-2 pl-5">
+        {missionPoints.map(([name, text]) => (
+          <li key={name}>
+            <span className="font-semibold text-ink">{name}:</span> {text}
+          </li>
+        ))}
+      </ol>
+    </>
   );
 }
 
