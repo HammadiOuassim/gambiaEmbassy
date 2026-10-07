@@ -10,7 +10,7 @@ import { NewsReel } from "@/components/news-reel";
 import { serviceSlug } from "@/lib/service-links";
 
 const staff = [
-  "Consular Officer",
+  "Ambassador",
   "Deputy Head of Mission",
   "Consular Officer",
   "Trade & Investment Officer",
@@ -78,21 +78,21 @@ export function HomePage() {
       <main>
         <section className="home-panel relative flex flex-col overflow-hidden text-white">
           <Image
-            src="/hero-corniche-night.jpg"
-            alt="West Bay skyline at night, seen from the Doha Corniche"
+            src="/hero-doha-westbay-dusk.jpg"
+            alt="West Bay skyline in Doha at dusk, across the water"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[center_45%]"
+            className="object-cover object-[center_38%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/5" />
           <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col justify-center px-4 py-6 sm:px-6">
-            <div>
+            <div className="-translate-y-8">
               <p className="inline-flex items-center gap-2 text-xs tracking-[0.16em] text-white/80">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 OFFICIAL DIPLOMATIC MISSION
               </p>
-              <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl">
                 Embassy of The Gambia in the State of Qatar
               </h1>
               <p className="mt-4 max-w-lg text-base text-white/80">
@@ -118,40 +118,41 @@ export function HomePage() {
           <HighlightReel />
         </section>
 
-        <section className="home-panel bg-[#f6f5f2]">
-          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col justify-center px-4 py-6 sm:px-6">
+        <section className="home-panel !overflow-y-auto bg-[#f6f5f2] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               AMBASSADOR&apos;S MESSAGE
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
               A warm welcome from the Ambassador
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-muted">
-              A message for Gambian citizens and partners in Qatar, and the team that delivers it.
+            <p className="mt-2 max-w-3xl text-sm text-muted">
+              Meet the Ambassador and learn more about the Embassy&apos;s commitment to Gambian
+              citizens and partners in Qatar.
             </p>
-            <div className="mt-6 grid items-stretch gap-5 sm:grid-cols-[168px_1fr]">
-              <div className="flex h-full min-h-40 items-center justify-center rounded-3xl border border-black/5 bg-white">
-                <span className="flex h-28 w-28 items-center justify-center rounded-full bg-stone-200 text-stone-700">
-                  <PersonIcon className="h-16 w-16" />
+            <div className="mt-6 grid items-start gap-5 md:grid-cols-[240px_1fr]">
+              <div className="flex min-h-52 items-center justify-center rounded-3xl border border-black/5 bg-white p-6">
+                <span className="flex h-40 w-40 items-center justify-center rounded-full bg-[#d9d9d9] text-stone-800">
+                  <PersonIcon className="h-24 w-24" />
                 </span>
               </div>
               <AmbassadorMessage />
             </div>
-            <div className="mt-6 flex items-end justify-between gap-4">
-              <h2 className="text-xl font-semibold">Embassy Staff</h2>
-              <p className="hidden text-sm text-muted sm:block">The people serving citizens and partners</p>
+            <div className="mt-8 flex items-end justify-between gap-4">
+              <h2 className="text-xl font-semibold text-ink">Embassy Staff</h2>
+              <p className="text-right text-sm text-muted">Meet the team supporting citizens and partners</p>
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-              {staff.map((role, index) => (
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {staff.map((role) => (
                 <article
-                  key={`${role}-${index}`}
-                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-4 text-center text-ink"
+                  key={role}
+                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-6 text-center text-ink"
                 >
-                  <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-stone-200">
-                    <PersonIcon />
+                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e4e4e4] text-stone-700">
+                    <PersonIcon className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-3 text-sm font-semibold">Full Name</h3>
-                  <p className="text-xs leading-5 text-muted">{role}</p>
+                  <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
+                  <p className="mt-1 text-xs leading-5 text-muted">{role}</p>
                 </article>
               ))}
             </div>
@@ -161,7 +162,7 @@ export function HomePage() {
         <section id="services" className="home-panel section-stone text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
           <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
-            STAFF ASSISTING A CITIZEN
+            Consular services
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
             Official support, clearly guided
