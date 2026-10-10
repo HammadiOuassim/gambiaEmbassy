@@ -25,7 +25,7 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
     <div className="mt-6">
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs font-medium text-ink">Scroll sideways to read every service</p>
-        <div className="flex shrink-0 gap-2">
+        {/* <div className="flex shrink-0 gap-2">
           <button
             type="button"
             aria-label="Previous services"
@@ -42,7 +42,26 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
           >
             →
           </button>
-        </div>
+        </div> */}
+        <div className="flex shrink-0 gap-2">
+  <button
+    type="button"
+    aria-label="Previous services"
+    onClick={() => scroll(-1)}
+    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white text-ink shadow-md transition-shadow duration-200 hover:shadow-lg"
+  >
+    ←
+  </button>
+
+  <button
+    type="button"
+    aria-label="Next services"
+    onClick={() => scroll(1)}
+    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-black/10 bg-white text-ink shadow-md transition-shadow duration-200 hover:shadow-lg"
+  >
+    →
+  </button>
+</div>
       </div>
       <div
         ref={scroller}
@@ -53,9 +72,12 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
             key={card.title}
             className="flex w-72 shrink-0 flex-col rounded-2xl border border-black/10 bg-white p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
+            {/* <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
               <ServiceIcon title={card.title} />
-            </span>
+            </span> */}
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-100 text-[#CE1126]">
+  <ServiceIcon title={card.title} />
+</span>
             <h3 className="mt-3 text-sm font-semibold leading-5">{card.title}</h3>
             <p className="mt-2 text-xs leading-5 text-muted">{card.body}</p>
             {card.note ? (

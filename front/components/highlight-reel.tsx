@@ -146,7 +146,7 @@ export function HighlightReel() {
   return (
     <div
       ref={viewportRef}
-      className="relative z-10 shrink-0 overflow-hidden px-4 pt-2 pb-6 sm:px-6"
+      className="relative z-10 shrink-0 overflow-hidden px-4 pt-2 pb-3 sm:px-6"
       onPointerDown={(event) => {
         startX.current = event.clientX;
       }}
@@ -168,7 +168,7 @@ export function HighlightReel() {
         {cards.map((item, cardIndex) => (
           <article
             key={`${item.title}-${cardIndex}`}
-            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/10 px-4 py-3 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+            className="flex w-full shrink-0 items-center gap-4 rounded-2xl border border-white/15 bg-white/10 px-4 py-2 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
           >
             <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
               <Image src={item.image} alt={item.alt} fill sizes="64px" className="object-cover" />

@@ -108,8 +108,8 @@ const news = [
     tag: "Embassy announcement",
     tone: "bg-emerald-50 text-emerald-800",
     date: "28 September 2026",
-    title: "Mobile consular desk scheduled for Al Wakrah",
-    image: "/news-1.jpg",
+    title: "The Gambian ambassador meets the Qatari minister.",
+    image: "/g ambasador meet qr.jpg",
   },
   {
     tag: "Government news",
@@ -245,12 +245,18 @@ export function HomePage() {
             <p className="text-sm text-ink/80">
               Unsure which service applies? Our consular team can help you choose the right route.
             </p>
-            <a
+            {/* <a
               href="#location"
               className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-ink"
             >
               Contact Consular Desk
-            </a>
+            </a> */}
+  <a
+  href="#location"
+  className="rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg cursor-pointer"
+>
+  Contact Consular Desk
+</a>
           </div>
 
           {/* Kept for later: full consular write-up below the cards.
@@ -374,14 +380,14 @@ export function HomePage() {
                 tags={["Key Economic Sectors", "Business Procedures", "Trade Opportunities", "Useful Contacts"]}
               />
               <DiscoverCard
-                image="/card-tourism.jpg"
+                image="/G tourism.avif"
                 kicker="TOURISM"
                 title="Experience the Smiling Coast of Africa"
                 body="Plan an unforgettable visit shaped by nature, heritage and generous hospitality."
                 tags={["Key Attractions", "Beaches", "Cultural Heritage", "Events & Festivals", "Travel & Accommodation Info"]}
               />
               <DiscoverCard
-                image="/history/history-3.jpg"
+                image="/G top dest.jpg"
                 kicker="TOP DESTINATION"
                 title="Follow the River Gambia from the coast inland"
                 body="The river that names the country is its defining journey, from the Atlantic shore through mangrove creeks to historic river towns."
