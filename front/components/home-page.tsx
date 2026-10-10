@@ -225,119 +225,282 @@ export function HomePage() {
         </section>
 
         <section
-          id="services"
-          className="home-panel section-stone !overflow-y-auto text-ink [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          <div className="mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
-          <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
-            Consular services
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
-            Official support, clearly guided
-          </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
-            The Embassy of the Republic of The Gambia in the State of Qatar provides consular
-            assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
-            information to foreign nationals travelling to The Gambia.
-          </p>
-          <ConsularCardRow cards={services} />
-          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-sand px-5 py-4 sm:flex-row sm:items-center">
-            <p className="text-sm text-ink/80">
-              Unsure which service applies? Our consular team can help you choose the right route.
-            </p>
-            {/* <a
-              href="#location"
-              className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-ink"
-            >
-              Contact Consular Desk
-            </a> */}
-  <a
-  href="#location"
-  className="rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg cursor-pointer"
+  id="services"
+  className="home-panel section-stone relative z-0 !overflow-y-auto text-ink [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
 >
-  Contact Consular Desk
-</a>
-          </div>
+  {/* ===== ANIMATED WAVE BACKGROUND ===== */}
+  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden mix-blend-multiply">
+    {/* Wave 1 - Dark Grey */}
+    <div className="animate-wave-up-1 absolute -bottom-10 left-0 right-0 h-full opacity-30 blur-sm">
+      <svg
+        viewBox="0 0 1440 600"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#1c1c1e"
+          d="M0,320L60,298.7C120,277,240,235,360,245.3C480,256,600,320,720,320C840,320,960,256,1080,224C1200,192,1320,192,1380,192L1440,192L1440,600L0,600Z"
+        />
+      </svg>
+    </div>
 
-          {/* Kept for later: full consular write-up below the cards.
-          <div className="mt-8 border-t border-black/10 pt-8">
-            <p className="max-w-3xl text-sm leading-7 text-ink">
-              The Embassy of the Republic of The Gambia in the State of Qatar provides consular
-              assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
-              information to foreign nationals travelling to The Gambia.
-            </p>
+    {/* Wave 2 - Mid Grey */}
+    <div className="animate-wave-up-2 absolute -bottom-10 left-0 right-0 h-full opacity-25 blur-sm">
+      <svg
+        viewBox="0 0 1440 600"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#3a3a3c"
+          d="M0,400L80,373.3C160,347,320,293,480,320C640,347,800,453,960,437.3C1120,421,1280,288,1360,224L1440,160L1440,600L0,600Z"
+        />
+      </svg>
+    </div>
 
-            <h3 className="mt-8 text-lg font-semibold tracking-tight">Services Provided</h3>
-            <ol className="mt-4 grid gap-3 md:grid-cols-2">
-              {consularGuide.map((item, index) => (
-                <li key={item.title} className="rounded-2xl bg-white p-4">
-                  <div className="flex gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-embassy text-sm font-semibold text-white">
-                      {index + 1}
-                    </span>
-                    <div>
-                      <h4 className="text-sm font-semibold">{item.title}</h4>
-                      <p className="mt-1 text-sm leading-6 text-muted">{item.body}</p>
-                      {"note" in item ? (
-                        <p className="mt-2 border-l-2 border-embassy pl-3 text-sm leading-6 text-ink">
-                          {item.note}
-                        </p>
-                      ) : null}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
+    {/* Wave 3 - Soft Grey (Highest Reach) */}
+    <div className="animate-wave-up-3 absolute -bottom-10 left-0 right-0 h-full opacity-20 blur-md">
+      <svg
+        viewBox="0 0 1440 600"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-full w-full"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#5a5a5e"
+          d="M0,200L60,224C120,248,240,296,360,293.3C480,291,600,238,720,202.7C840,168,960,152,1080,181.3C1200,211,1320,288,1380,326.7L1440,365L1440,600L0,600Z"
+        />
+      </svg>
+    </div>
 
-            <div className="mt-4 rounded-2xl bg-white px-5 py-4">
-              <h3 className="text-sm font-semibold">General Requirements</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Requirements vary depending on the service requested. Applicants may be required to
-                provide valid identification, supporting documents, photographs, application forms,
-                and applicable fees.
-              </p>
-              <p className="mt-2 text-sm leading-6 text-ink">
-                Members of the public are advised to contact the Embassy in advance to confirm the
-                applicable requirements and procedures.
-              </p>
+    {/* Glass Sheet Backdrop */}
+    <div className="absolute inset-0 bg-white/10 backdrop-blur-[8px]" />
+  </div>
+
+  {/* ===== SECTION CONTENT LAYER ===== */}
+  <div className="relative z-10 mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
+    <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
+      Consular services
+    </p>
+    <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
+      Official support, clearly guided
+    </h2>
+    <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+      The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+      assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+      information to foreign nationals travelling to The Gambia.
+    </p>
+    <ConsularCardRow cards={services} />
+    <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-sand/80 backdrop-blur-md px-5 py-4 sm:flex-row sm:items-center">
+      <p className="text-sm text-ink/80">
+        Unsure which service applies? Our consular team can help you choose the right route.
+      </p>
+      <a
+        href="#location"
+        className="cursor-pointer rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg"
+      >
+        Contact Consular Desk
+      </a>
+    </div>
+
+    {/* Kept for later: full consular write-up below the cards.
+    <div className="mt-8 border-t border-black/10 pt-8">
+      <p className="max-w-3xl text-sm leading-7 text-ink">
+        The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+        assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+        information to foreign nationals travelling to The Gambia.
+      </p>
+
+      <h3 className="mt-8 text-lg font-semibold tracking-tight">Services Provided</h3>
+      <ol className="mt-4 grid gap-3 md:grid-cols-2">
+        {consularGuide.map((item, index) => (
+          <li key={item.title} className="rounded-2xl bg-white p-4">
+            <div className="flex gap-3">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-embassy text-sm font-semibold text-white">
+                {index + 1}
+              </span>
+              <div>
+                <h4 className="text-sm font-semibold">{item.title}</h4>
+                <p className="mt-1 text-sm leading-6 text-muted">{item.body}</p>
+                {"note" in item ? (
+                  <p className="mt-2 border-l-2 border-embassy pl-3 text-sm leading-6 text-ink">
+                    {item.note}
+                  </p>
+                ) : null}
+              </div>
             </div>
+          </li>
+        ))}
+      </ol>
 
-            <div className="mt-4 rounded-2xl bg-embassy px-5 py-5 text-white">
-              <h3 className="text-sm font-semibold">Contact</h3>
-              <p className="mt-1 text-sm text-white/80">
-                Embassy of the Republic of The Gambia in the State of Qatar
-              </p>
-              <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                <div>
-                  <dt className="text-xs tracking-wide text-white/60">Telephone</dt>
-                  <dd className="mt-1 text-sm font-medium">
-                    <a href="tel:+97444652002" className="hover:underline">
-                      +974 4465 2002
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs tracking-wide text-white/60">Email</dt>
-                  <dd className="mt-1 text-sm font-medium">
-                    <a href="mailto:gambiaembassydoha@gmail.com" className="hover:underline">
-                      gambiaembassydoha@gmail.com
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs tracking-wide text-white/60">Office Hours</dt>
-                  <dd className="mt-1 text-sm font-medium">Sunday–Thursday, 8:00 AM–4:00 PM</dd>
-                </div>
-                <div>
-                  <dt className="text-xs tracking-wide text-white/60">Location</dt>
-                  <dd className="mt-1 text-sm font-medium">Doha, State of Qatar</dd>
-                </div>
-              </dl>
+      <div className="mt-4 rounded-2xl bg-white px-5 py-4">
+        <h3 className="text-sm font-semibold">General Requirements</h3>
+        <p className="mt-2 text-sm leading-6 text-muted">
+          Requirements vary depending on the service requested. Applicants may be required to
+          provide valid identification, supporting documents, photographs, application forms,
+          and applicable fees.
+        </p>
+        <p className="mt-2 text-sm leading-6 text-ink">
+          Members of the public are advised to contact the Embassy in advance to confirm the
+          applicable requirements and procedures.
+        </p>
+      </div>
+
+      <div className="mt-4 rounded-2xl bg-embassy px-5 py-5 text-white">
+        <h3 className="text-sm font-semibold">Contact</h3>
+        <p className="mt-1 text-sm text-white/80">
+          Embassy of the Republic of The Gambia in the State of Qatar
+        </p>
+        <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Telephone</dt>
+            <dd className="mt-1 text-sm font-medium">
+              <a href="tel:+97444652002" className="hover:underline">
+                +974 4465 2002
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Email</dt>
+            <dd className="mt-1 text-sm font-medium">
+              <a href="mailto:gambiaembassydoha@gmail.com" className="hover:underline">
+                gambiaembassydoha@gmail.com
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Office Hours</dt>
+            <dd className="mt-1 text-sm font-medium">Sunday–Thursday, 8:00 AM–4:00 PM</dd>
+          </div>
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Location</dt>
+            <dd className="mt-1 text-sm font-medium">Doha, State of Qatar</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    */}
+  </div>
+</section>
+        <section
+  id="services"
+  className="home-panel section-stone relative z-0 !overflow-y-auto text-ink [scrollbar-width:none] [&::-webkit-scrollbar]:hidden before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:opacity-15 before:bg-[linear-gradient(45deg,#0000_calc(25%/3),#ffffff_0_calc(50%/3),#0000_0_calc(250%/3),#ffffff_0_calc(275%/3),#0000_0),linear-gradient(45deg,#ffffff_calc(25%/3),#0000_0_calc(50%/3),#ffffff_0_25%,#0000_0_75%,#ffffff_0_calc(250%/3),#0000_0_calc(275%/3),#ffffff_0),linear-gradient(-45deg,#0000_calc(25%/3),#ffffff_0_calc(50%/3),#0000_0_calc(250%/3),#ffffff_0_calc(275%/3),#0000_0),linear-gradient(-45deg,#ffffff_calc(25%/3),#0000_0_calc(50%/3),#ffffff_0_25%,#0000_0_75%,#ffffff_0_calc(250%/3),#0000_0_calc(275%/3),#ffffff_0)] before:bg-[#c77979] before:[background-position:0_0,53px_53px] before:[background-size:106px_106px]"
+>
+  <div className="relative z-10 mx-auto flex min-h-full max-w-7xl flex-col px-4 py-6 sm:px-6">
+    <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
+      Consular services
+    </p>
+    <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
+      Official support, clearly guided
+    </h2>
+    <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+      The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+      assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+      information to foreign nationals travelling to The Gambia.
+    </p>
+    <ConsularCardRow cards={services} />
+    <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-2xl bg-sand px-5 py-4 sm:flex-row sm:items-center">
+      <p className="text-sm text-ink/80">
+        Unsure which service applies? Our consular team can help you choose the right route.
+      </p>
+      {/* <a
+        href="#location"
+        className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-medium text-ink"
+      >
+        Contact Consular Desk
+      </a> */}
+      <a
+        href="#location"
+        className="cursor-pointer rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg"
+      >
+        Contact Consular Desk
+      </a>
+    </div>
+
+    {/* Kept for later: full consular write-up below the cards.
+    <div className="mt-8 border-t border-black/10 pt-8">
+      <p className="max-w-3xl text-sm leading-7 text-ink">
+        The Embassy of the Republic of The Gambia in the State of Qatar provides consular
+        assistance and guidance to Gambian nationals residing in or visiting Qatar, as well as
+        information to foreign nationals travelling to The Gambia.
+      </p>
+
+      <h3 className="mt-8 text-lg font-semibold tracking-tight">Services Provided</h3>
+      <ol className="mt-4 grid gap-3 md:grid-cols-2">
+        {consularGuide.map((item, index) => (
+          <li key={item.title} className="rounded-2xl bg-white p-4">
+            <div className="flex gap-3">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-embassy text-sm font-semibold text-white">
+                {index + 1}
+              </span>
+              <div>
+                <h4 className="text-sm font-semibold">{item.title}</h4>
+                <p className="mt-1 text-sm leading-6 text-muted">{item.body}</p>
+                {"note" in item ? (
+                  <p className="mt-2 border-l-2 border-embassy pl-3 text-sm leading-6 text-ink">
+                    {item.note}
+                  </p>
+                ) : null}
+              </div>
             </div>
+          </li>
+        ))}
+      </ol>
+
+      <div className="mt-4 rounded-2xl bg-white px-5 py-4">
+        <h3 className="text-sm font-semibold">General Requirements</h3>
+        <p className="mt-2 text-sm leading-6 text-muted">
+          Requirements vary depending on the service requested. Applicants may be required to
+          provide valid identification, supporting documents, photographs, application forms,
+          and applicable fees.
+        </p>
+        <p className="mt-2 text-sm leading-6 text-ink">
+          Members of the public are advised to contact the Embassy in advance to confirm the
+          applicable requirements and procedures.
+        </p>
+      </div>
+
+      <div className="mt-4 rounded-2xl bg-embassy px-5 py-5 text-white">
+        <h3 className="text-sm font-semibold">Contact</h3>
+        <p className="mt-1 text-sm text-white/80">
+          Embassy of the Republic of The Gambia in the State of Qatar
+        </p>
+        <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Telephone</dt>
+            <dd className="mt-1 text-sm font-medium">
+              <a href="tel:+97444652002" className="hover:underline">
+                +974 4465 2002
+              </a>
+            </dd>
           </div>
-          */}
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Email</dt>
+            <dd className="mt-1 text-sm font-medium">
+              <a href="mailto:gambiaembassydoha@gmail.com" className="hover:underline">
+                gambiaembassydoha@gmail.com
+              </a>
+            </dd>
           </div>
-        </section>
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Office Hours</dt>
+            <dd className="mt-1 text-sm font-medium">Sunday–Thursday, 8:00 AM–4:00 PM</dd>
+          </div>
+          <div>
+            <dt className="text-xs tracking-wide text-white/60">Location</dt>
+            <dd className="mt-1 text-sm font-medium">Doha, State of Qatar</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    */}
+  </div>
+</section>
 
         <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
           <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
@@ -397,7 +560,44 @@ export function HomePage() {
             </div>
           </div>
         </section>
-
+        <section id="discover" className="home-panel section-stone iso-pattern-bg relative z-0 text-ink">
+  <div className="relative z-10 mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
+    <p className="text-xs font-semibold tracking-[0.16em] text-embassy">
+      DISCOVER THE GAMBIA
+    </p>
+    <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
+      A destination for partnership and exploration
+    </h2>
+    <p className="mt-3 max-w-2xl text-sm text-muted">
+      Practical resources for investors, businesses and travellers building meaningful
+      connections with The Gambia.
+    </p>
+    <div className="mt-6 grid min-h-0 flex-1 grid-cols-1 gap-5 md:grid-cols-3 lg:overflow-hidden">
+      <DiscoverCard
+        image="/card-trade.png"
+        kicker="TRADE & INVESTMENT"
+        title="Grow with one of West Africa’s most open economies"
+        body="Find sector intelligence and clear routes for responsible investment."
+        tags={["Key Economic Sectors", "Business Procedures", "Trade Opportunities", "Useful Contacts"]}
+      />
+      <DiscoverCard
+        image="/G tourism.avif"
+        kicker="TOURISM"
+        title="Experience the Smiling Coast of Africa"
+        body="Plan an unforgettable visit shaped by nature, heritage and generous hospitality."
+        tags={["Key Attractions", "Beaches", "Cultural Heritage", "Events & Festivals", "Travel & Accommodation Info"]}
+      />
+      <DiscoverCard
+        image="/G top dest.jpg"
+        kicker="TOP DESTINATION"
+        title="Follow the River Gambia from the coast inland"
+        body="The river that names the country is its defining journey, from the Atlantic shore through mangrove creeks to historic river towns."
+        tags={["River Gambia", "Kunta Kinteh Island", "Banjul", "Mangrove Creeks"]}
+        href="#about"
+      />
+    </div>
+  </div>
+</section>
         <NewsSection />
 
         <section id="location" className="home-panel section-stone flex flex-col text-ink">
@@ -430,6 +630,39 @@ export function HomePage() {
             </div>
           </div>
         </section>
+
+
+
+        <section id="location" className="home-panel section-stone warm-pattern-bg relative z-0 flex flex-col text-ink">
+  <div className="relative z-10 mx-auto flex h-full min-h-0 w-full max-w-7xl flex-col px-4 py-6 sm:px-6">
+    <p className="text-xs font-semibold tracking-[0.16em] text-embassy">EMBASSY LOCATION</p>
+    <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-4xl">
+      Find the Embassy in Doha
+    </h2>
+    <p className="mt-3 max-w-2xl text-sm text-muted">
+      Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
+      services and appointments.
+    </p>
+    <div className="relative mt-6 min-h-72 flex-1 overflow-hidden rounded-[28px] border border-black/10 bg-[#f3efe4] shadow-[0_6px_14px_rgba(15,23,42,0.13)] lg:min-h-0">
+      <iframe
+        title="Embassy of The Gambia in the West Bay Diplomatic Area, Doha"
+        src="https://maps.google.com/maps?q=West+Bay+Diplomatic+Area,+Doha,+Qatar&z=15&hl=en&output=embed"
+        className="h-full w-full border-0"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+      <div className="absolute right-4 bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 text-ink shadow-sm backdrop-blur-md sm:right-auto sm:max-w-sm">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-embassy text-white">
+          <PinIcon />
+        </span>
+        <span>
+          <span className="block text-sm font-semibold">Doha Central · Primary service centre</span>
+          <span className="block text-xs text-muted">Appointments Mon–Thu · 08:30–14:00</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
       <SiteFooter className="home-footer" />
     </div>
