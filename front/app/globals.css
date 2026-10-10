@@ -128,3 +128,152 @@ body {
       rgba(255, 255, 255, 0.03) 23px
     );
 }
+
+@keyframes wave-float-up {
+  0% {
+    transform: translateY(15%) scaleY(1);
+  }
+  50% {
+    transform: translateY(-10%) scaleY(1.2);
+  }
+  100% {
+    transform: translateY(15%) scaleY(1);
+  }
+}
+
+.animate-wave-up-1 {
+  animation: wave-float-up 14s ease-in-out infinite;
+}
+
+.animate-wave-up-2 {
+  animation: wave-float-up 18s ease-in-out infinite 2s;
+}
+
+.animate-wave-up-3 {
+  animation: wave-float-up 22s ease-in-out infinite 4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wave-up-1,
+  .animate-wave-up-2,
+  .animate-wave-up-3 {
+    animation: none !important;
+  }
+}
+
+
+.iso-pattern-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.iso-pattern-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  opacity: 0.15; /* Adjust opacity (0.05 to 0.20) for subtlety */
+  --s: 200px;
+  --c1: #1d1d1d;
+  --c2: #4e4f51;
+  --c3: #3c3c3c;
+
+  background:
+    repeating-conic-gradient(
+      from 30deg,
+      #0000 90deg 120deg,
+      var(--c3) 0deg 180deg
+    )
+    calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0deg 60deg,
+      var(--c2) 0deg 120deg,
+      var(--c3) 0deg 180deg
+    );
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+.warm-pattern-bg {
+  position: relative;
+  z-index: 0;
+}
+
+.warm-pattern-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  opacity: 0.1; /* Adjust opacity (e.g., 0.05 to 0.20) as needed */
+
+  --u: 20px;
+  --hue: hue-rotate(0deg);
+
+  /* GREYSCALE COLOR PALETTE */
+  --c1: #3a3a3c; /* Dark Grey */
+  --c2: #636366; /* Mid Grey */
+  --c3: #a1a1a6; /* Light Grey */
+  --cs: #1c1c1e; /* Deep Charcoal Shadow */
+
+  --gp: 50% / calc(var(--u) * 12) calc(var(--u) * 12.8);
+
+  filter: var(--hue);
+  background:
+    repeating-conic-gradient(
+      from 61.93deg at 75% 36.5%,
+      var(--c1) 0%,
+      var(--c1) 2%,
+      var(--cs) 16%,
+      #fff0 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from 118.07deg at 75% 87.5%,
+      var(--c3) 0% 34.5%,
+      #fff0 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from 118.07deg at 50% 75%,
+      #fff0 2%,
+      var(--cs) 17.15%,
+      #fff0 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from 61.93deg at 50% 50%,
+      var(--c3) 0% 15.59%,
+      var(--c2) 0% 32.79%,
+      #fff0 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from -118.07deg at 25% 12.5%,
+      var(--c2) 0% 32.79%,
+      var(--c1) 0% 50%,
+      #fff0 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from -61.93deg at 25% 87.5%,
+      #fff0 0 67.25%,
+      var(--c2) 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from -61.93deg at 50% 75%,
+      #fff0 0% 66.5%,
+      var(--c1) 0% 84.25%,
+      var(--c3) 0% 100%
+    )
+    var(--gp),
+    repeating-conic-gradient(
+      from -61.93deg at 25% 37.5%,
+      var(--c3) 0% 34.5%,
+      var(--c1) 0% 67.25%,
+      var(--c2) 0% 100%
+    )
+    var(--gp);
+}
