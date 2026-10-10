@@ -51,10 +51,10 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
         {cards.map((card) => (
           <article
             key={card.title}
-            className="flex w-72 shrink-0 flex-col rounded-2xl border border-black/5 bg-white p-4 text-ink"
+            className="flex w-72 shrink-0 flex-col rounded-2xl border border-black/10 bg-white p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
-              <BuildingIcon />
+              <ServiceIcon title={card.title} />
             </span>
             <h3 className="mt-3 text-sm font-semibold leading-5">{card.title}</h3>
             <p className="mt-2 text-xs leading-5 text-muted">{card.body}</p>
@@ -93,10 +93,60 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
   );
 }
 
-function BuildingIcon() {
+function ServiceIcon({ title }: { title: string }) {
+  const iconClass = "h-4 w-4";
+
+  if (title === "Passport & Travel Documents") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path d="M9 7h6M9 11h6M9 15h4" />
+      </svg>
+    );
+  }
+
+  if (title === "Visas & Entry Regulations") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M4 12h16M12 4a12 12 0 0 1 0 16M12 4a12 12 0 0 0 0 16" />
+      </svg>
+    );
+  }
+
+  if (title === "Certificates and Document Assistance") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+        <path d="M7 3h8l3 3v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+        <path d="M15 3v4h4M9 11h6M9 14h4M10 17l2 4 2-4" />
+      </svg>
+    );
+  }
+
+  if (title === "Civil Registration") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+        <circle cx="9" cy="8" r="3" />
+        <circle cx="17" cy="9" r="2" />
+        <path d="M3.5 20a5.5 5.5 0 0 1 11 0M15 14.5a4.5 4.5 0 0 1 5.5 4.4" />
+      </svg>
+    );
+  }
+
+  if (title === "Consular Assistance") {
+    return (
+      <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+        <circle cx="12" cy="12" r="8" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="m6.3 6.3 3.6 3.6m4.2 0 3.6-3.6m0 11.4-3.6-3.6m-4.2 0-3.6 3.6" />
+      </svg>
+    );
+  }
+
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M4 20h16M6 20V8l6-4 6 4v12M10 20v-5h4v5" />
+    <svg viewBox="0 0 24 24" className={iconClass} fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+      <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" />
+      <path d="M9 12h6M12 9v6" />
     </svg>
   );
 }

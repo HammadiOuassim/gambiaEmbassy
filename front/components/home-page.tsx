@@ -9,11 +9,14 @@ import { ConsularCardRow } from "@/components/consular-card-row";
 import { HighlightReel } from "@/components/highlight-reel";
 import { NewsReel } from "@/components/news-reel";
 const staff = [
-  "Ambassador",
   "Deputy Head of Mission",
   "Consular Officer",
   "Trade & Investment Officer",
   "Administrative Officer",
+  "Protocol Officer",
+  "Finance Officer",
+  "Community Liaison Officer",
+  "Office Assistant",
 ];
 
 const consularGuide = [
@@ -152,8 +155,8 @@ export function HomePage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                 OFFICIAL DIPLOMATIC MISSION
               </p>
-              <h1 className="mt-4 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl">
-                Embassy of The Gambia in the State of Qatar
+              <h1 className="mt-4 text-2xl font-semibold leading-tight tracking-tight sm:text-3xl lg:text-4xl">
+                Embassy of The Gambia in the State <span className="block">of Qatar</span>
               </h1>
               <p className="mt-4 max-w-lg text-base text-white/80">
                 Connecting citizens, facilitating consular services, and fostering bilateral trade
@@ -162,15 +165,17 @@ export function HomePage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/register"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#CE1126] px-5 py-3 text-sm font-semibold text-white"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#CE1126] px-5 py-2.5 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-[0_8px_22px_rgba(206,17,38,0.4)]"
                 >
                   Register as Citizen in Qatar
                 </Link>
                 <a
                   href="#services"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#0C1C8C] bg-white px-5 py-3 text-sm font-semibold text-[#0C1C8C]"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-transparent bg-white px-5 py-2.5 text-sm font-semibold transition-shadow duration-300 hover:shadow-[0_8px_22px_rgba(12,28,140,0.28)] [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(90deg,#CE1126,#0C1C8C)_border-box]"
                 >
-                  Explore Consular Services →
+                  <span className="bg-[linear-gradient(90deg,#CE1126,#0C1C8C)] bg-clip-text text-transparent">
+                    Explore Consular Services →
+                  </span>
                 </a>
               </div>
             </div>
@@ -190,8 +195,8 @@ export function HomePage() {
               Meet the Ambassador and learn more about the Embassy&apos;s commitment to Gambian
               citizens and partners in Qatar.
             </p>
-            <div className="mt-6 grid items-start gap-5 md:grid-cols-[240px_1fr]">
-              <div className="flex min-h-52 items-center justify-center rounded-3xl border border-black/5 bg-white p-6">
+            <div className="mt-6 grid items-start gap-5 md:h-[328px] md:grid-cols-[280px_1fr] md:items-stretch">
+              <div className="flex min-h-52 items-center justify-center rounded-3xl border border-black/10 bg-white p-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] md:h-full">
                 <span className="flex h-40 w-40 items-center justify-center rounded-full bg-[#d9d9d9] text-stone-800">
                   <PersonIcon className="h-24 w-24" />
                 </span>
@@ -202,11 +207,11 @@ export function HomePage() {
               <h2 className="text-xl font-semibold text-ink">Embassy Staff</h2>
               <p className="text-right text-sm text-muted">Meet the team supporting citizens and partners</p>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            <div className="mt-5 grid grid-cols-2 justify-items-center gap-6 lg:grid-cols-[repeat(4,220px)] lg:justify-center">
               {staff.map((role) => (
                 <article
                   key={role}
-                  className="min-w-0 rounded-2xl border border-black/5 bg-white px-3 py-6 text-center text-ink"
+                  className="flex h-[220px] w-full max-w-[220px] flex-col items-center justify-center rounded-2xl border border-black/10 bg-white px-3 py-6 text-center text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]"
                 >
                   <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e4e4e4] text-stone-700">
                     <PersonIcon className="h-7 w-7" />
@@ -399,7 +404,7 @@ export function HomePage() {
               Locate the Embassy of the Republic of The Gambia in Doha to access in-person consular
               services and appointments.
             </p>
-            <div className="relative mt-6 min-h-72 flex-1 overflow-hidden rounded-[28px] bg-[#f3efe4] lg:min-h-0">
+            <div className="relative mt-6 min-h-72 flex-1 overflow-hidden rounded-[28px] border border-black/10 bg-[#f3efe4] shadow-[0_6px_14px_rgba(15,23,42,0.13)] lg:min-h-0">
               <iframe
                 title="Embassy of The Gambia in the West Bay Diplomatic Area, Doha"
                 src="https://maps.google.com/maps?q=West+Bay+Diplomatic+Area,+Doha,+Qatar&z=15&hl=en&output=embed"
@@ -461,7 +466,7 @@ function DiscoverCard({
   href?: string;
 }) {
   return (
-    <article className="overflow-hidden rounded-3xl bg-white text-ink">
+    <article className="overflow-hidden rounded-3xl border border-black/10 bg-white text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]">
       <Image src={image} alt="" width={406} height={220} className="h-48 w-full object-cover sm:h-56" />
       <div className="p-4 sm:p-5">
         <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>

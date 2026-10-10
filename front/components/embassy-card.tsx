@@ -30,7 +30,7 @@ export function EmbassyCard() {
   return (
     <article
       id="embassy"
-      className={`relative h-full min-h-0 rounded-3xl bg-[#cccccc] text-ink ${
+      className={`relative h-full min-h-0 rounded-3xl border border-black/10 bg-[#cccccc] text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] ${
         open
           ? "overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           : "overflow-hidden"
