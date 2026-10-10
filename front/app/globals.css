@@ -91,6 +91,28 @@ body {
   background-color: var(--panel);
 }
 
+@keyframes about-tab-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-tab-content {
+  animation: about-tab-content-in 220ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-tab-content {
+    animation: none;
+  }
+}
+
 .auth-stripes {
   background-color: #043b2e;
   background-image: radial-gradient(

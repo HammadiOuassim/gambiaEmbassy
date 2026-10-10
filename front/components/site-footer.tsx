@@ -25,7 +25,7 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         </div>
       </div>
       <div className="h-1.5 bg-white" />
-      <div className="bg-[#2c2926] text-white">
+      <div className="bg-[#1E293B] text-white">
       <div className="mx-auto grid w-full max-w-7xl gap-x-6 gap-y-4 px-4 py-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-5">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
@@ -63,7 +63,7 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         />
       </div>
       </div>
-      <div className="bg-[#2c2926] text-white/60">
+      <div className="bg-[#1E293B] text-white/60">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 border-t border-white/10 px-4 py-3 text-xs sm:px-6 md:flex-row md:justify-between">
           <p>© 2026 Embassy of The Gambia in Doha. Official government service.</p>
           <p>Secure · Accessible · Privacy-respecting</p>

@@ -154,7 +154,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
         {cards.map((item, cardIndex) => (
           <article
             key={`${item.title}-${cardIndex}`}
-            className="w-full shrink-0 rounded-3xl border border-black/5 bg-[#f6f5f2] p-4 text-ink sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
+            className="w-full shrink-0 rounded-3xl border border-black/10 bg-[#f6f5f2] p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
           >
             <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>
             <p className="mt-3 text-xs text-muted">{item.date}</p>

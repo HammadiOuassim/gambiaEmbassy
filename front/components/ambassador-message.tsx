@@ -10,12 +10,11 @@ const paragraphs = [
 
 export function AmbassadorMessage() {
   return (
-    <article className="rounded-3xl border border-black/5 bg-white px-6 py-6 sm:px-8">
-      <div className="flex items-start justify-between gap-4">
+    <article className="flex h-full min-h-52 flex-col rounded-3xl border border-black/10 bg-white px-6 py-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] sm:px-8">
+      <div>
         <h3 className="text-xl font-semibold text-ink">Ambassador&apos;s Welcome</h3>
-        <BuildingIcon />
       </div>
-      <div className="mt-4 space-y-3 text-sm leading-7 text-muted">
+      <div className="mt-4 min-h-0 flex-1 space-y-3 overflow-y-auto pr-2 text-sm leading-7 text-muted [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
@@ -41,14 +40,6 @@ function PersonIcon() {
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
       <circle cx="12" cy="8" r="4" />
       <path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" />
-    </svg>
-  );
-}
-
-function BuildingIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 text-embassy" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-      <path d="M4 20h16M6 20V8l6-4 6 4v12M10 20v-5h4v5" />
     </svg>
   );
 }
