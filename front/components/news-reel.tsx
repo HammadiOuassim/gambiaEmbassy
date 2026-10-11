@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { GlowHover } from "@/components/glow-hover";
 
 type NewsItem = {
   tag: string;
@@ -132,7 +133,7 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
   return (
     <div
       ref={viewportRef}
-      className="mt-8 overflow-hidden pb-2"
+      className="mt-8 overflow-hidden py-4"
       onPointerDown={(event) => {
         startX.current = event.clientX;
       }}
@@ -152,24 +153,29 @@ export function NewsReel({ items }: { items: NewsItem[] }) {
         }}
       >
         {cards.map((item, cardIndex) => (
-          <article
+          <GlowHover
             key={`${item.title}-${cardIndex}`}
-            className="w-full shrink-0 rounded-3xl border border-black/10 bg-[#f6f5f2] p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
+            className="w-full shrink-0 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
+            glowClassName="rounded-[1.75rem]"
           >
+          <article className="relative w-full rounded-3xl border border-black/10 bg-[#f6f5f2] p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5">
             <span className={`inline-flex rounded-full px-2.5 py-1 text-xs ${item.tone}`}>{item.tag}</span>
             <p className="mt-3 text-xs text-muted">{item.date}</p>
             <h3 className="mt-1 line-clamp-2 h-11 text-base font-semibold leading-snug text-ink">
               {item.title}
             </h3>
-            <Image
-              src={item.image}
-              alt=""
-              width={272}
-              height={160}
-              className="mt-4 h-40 w-full rounded-xl object-cover"
-            />
+            <div className="mt-4 h-40 overflow-hidden rounded-xl">
+              <Image
+                src={item.image}
+                alt=""
+                width={272}
+                height={160}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+            </div>
             <p className="mt-3 text-sm text-embassy">Read full update →</p>
           </article>
+          </GlowHover>
         ))}
       </div>
     </div>

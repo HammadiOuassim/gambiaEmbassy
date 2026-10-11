@@ -30,65 +30,61 @@ export function EmbassyCard() {
   return (
     <article
       id="embassy"
-      className={`relative h-full min-h-0 rounded-3xl border border-black/10 bg-[#cccccc] text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] ${
-        open
-          ? "overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          : "overflow-hidden"
-      }`}
+      className="relative flex h-[19rem] flex-col overflow-hidden rounded-3xl border border-black/10 bg-[#cccccc] text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5"
     >
       <div
-        className="sticky top-0 z-10 h-1.5"
+        className="h-1.5 shrink-0"
         style={{
           background:
             "linear-gradient(90deg, #CE1126 0 30%, #ffffff 30% 34%, #0C1C8C 34% 66%, #ffffff 66% 70%, #3A7728 70% 100%)",
         }}
         aria-hidden
       />
-      <div className="p-5 sm:p-8">
-      <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-semibold">About The Embassy</h3>
-        <span className="text-embassy">
-          <BuildingIcon />
-        </span>
-      </div>
-      <p className="mt-4 rounded-2xl border-l-4 border-embassy bg-white px-4 py-3 text-sm leading-7 text-muted">
-        “Our Embassy is a home away from home for Gambians and a bridge for enduring cooperation
-        with the State of Qatar.”
-      </p>
-      <ul className="mt-6 divide-y divide-black/10 text-sm">
-        {items.map((item) => {
-          const isOpen = open === item.title;
-          return (
-            <li key={item.title}>
-              <button
-                type="button"
-                aria-expanded={isOpen}
-                onClick={() => setOpen(isOpen ? null : item.title)}
-                className="flex w-full items-center justify-between py-3 text-left text-ink transition-colors duration-300 hover:text-embassy"
-              >
-                <span>{item.title}</span>
-                <span
-                  aria-hidden
-                  className={`inline-block text-embassy transition-transform duration-300 ${
-                    isOpen ? "rotate-90" : ""
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex shrink-0 items-center justify-between gap-3">
+          <h3 className="text-lg font-semibold tracking-tight">About The Embassy</h3>
+          <span className="text-embassy">
+            <BuildingIcon />
+          </span>
+        </div>
+        <p className="mt-2.5 shrink-0 rounded-2xl border-l-4 border-embassy bg-white px-3 py-2 text-sm leading-6 text-muted">
+          “Our Embassy is a home away from home for Gambians and a bridge for enduring cooperation
+          with the State of Qatar.”
+        </p>
+        <ul className="mt-3 divide-y divide-black/10 text-sm">
+          {items.map((item) => {
+            const isOpen = open === item.title;
+            return (
+              <li key={item.title}>
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpen(isOpen ? null : item.title)}
+                  className="flex w-full items-center justify-between py-2 text-left text-ink transition-colors duration-300 hover:text-embassy"
+                >
+                  <span>{item.title}</span>
+                  <span
+                    aria-hidden
+                    className={`inline-block text-embassy transition-transform duration-300 ${
+                      isOpen ? "rotate-90" : ""
+                    }`}
+                  >
+                    ↗
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
-                  ↗
-                </span>
-              </button>
-              <div
-                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="min-h-0 overflow-hidden">
-                  <div className="pb-3 text-sm leading-7 text-ink/80">{itemBody(item.title)}</div>
+                  <div className="min-h-0 overflow-hidden">
+                    <div className="pb-3 text-sm leading-6 text-ink/80">{itemBody(item.title)}</div>
+                  </div>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </article>
   );

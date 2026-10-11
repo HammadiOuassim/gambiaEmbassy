@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Crest } from "@/components/crest";
+import { GlowHover } from "@/components/glow-hover";
 
 export function SiteFooter({ className = "" }: { className?: string }) {
   return (
     <footer className={`overflow-hidden bg-[#2c2926] text-white ${className}`}>
       <div className="bg-[#0e5c48]">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-4 py-4 sm:px-6 md:flex-row md:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-3 px-4 py-5 sm:px-6 md:flex-row md:items-center">
           <div>
             <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
               Are you a Gambian citizen living in Qatar?
@@ -15,13 +16,15 @@ export function SiteFooter({ className = "" }: { className?: string }) {
               support you in an emergency.
             </p>
           </div>
-          <Link
-            href="/register"
-            className="inline-flex items-center gap-2 rounded-full bg-[#CE1126] px-5 py-3 text-sm font-semibold text-white"
-          >
-            <ShieldIcon />
-            Register as Citizen in Qatar
-          </Link>
+          <GlowHover className="inline-flex shrink-0" glowClassName="rounded-full">
+            <Link
+              href="/register"
+              className="relative inline-flex items-center gap-2 rounded-full bg-[#CE1126] px-5 py-3 text-sm font-semibold text-white"
+            >
+              <ShieldIcon />
+              Register as Citizen in Qatar
+            </Link>
+          </GlowHover>
         </div>
       </div>
       <div className="h-1.5 bg-white" />

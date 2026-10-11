@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { GlowHover } from "@/components/glow-hover";
 
 export type ConsularCard = {
   title: string;
@@ -65,50 +66,50 @@ export function ConsularCardRow({ cards }: { cards: readonly ConsularCard[] }) {
       </div>
       <div
         ref={scroller}
-        className="mt-3 flex w-full items-stretch gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-3 flex w-full items-stretch gap-3 overflow-x-auto px-2 py-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {cards.map((card) => (
-          <article
+          <GlowHover
             key={card.title}
-            className="flex w-72 shrink-0 flex-col rounded-2xl border border-black/10 bg-white p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]"
+            className="flex w-72 shrink-0 items-stretch"
+            glowClassName="rounded-[1.4rem]"
           >
-            {/* <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-embassy-soft text-embassy">
-              <ServiceIcon title={card.title} />
-            </span> */}
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-100 text-[#CE1126]">
-  <ServiceIcon title={card.title} />
-</span>
-            <h3 className="mt-3 text-sm font-semibold leading-5">{card.title}</h3>
-            <p className="mt-2 text-xs leading-5 text-muted">{card.body}</p>
-            {card.note ? (
-              <p className="mt-2 border-l-2 border-embassy pl-3 text-xs leading-5 text-ink">{card.note}</p>
-            ) : null}
-            {card.items ? (
-              <ul className="mt-3 space-y-1 text-xs text-ink">
-                {card.items.map((item) => (
-                  <li key={item}>→ {item}</li>
-                ))}
-              </ul>
-            ) : null}
-            {card.contacts ? (
-              <dl className="mt-3 space-y-2 text-xs">
-                {card.contacts.map((item) => (
-                  <div key={item.label}>
-                    <dt className="text-muted">{item.label}</dt>
-                    <dd className="font-medium text-ink">
-                      {item.href ? (
-                        <a href={item.href} className="hover:text-embassy">
-                          {item.value}
-                        </a>
-                      ) : (
-                        item.value
-                      )}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            ) : null}
-          </article>
+            <article className="relative flex w-full flex-col rounded-2xl border border-black/10 bg-white p-4 text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-100 text-[#CE1126]">
+                <ServiceIcon title={card.title} />
+              </span>
+              <h3 className="mt-3 text-sm font-semibold leading-5">{card.title}</h3>
+              <p className="mt-2 text-xs leading-5 text-muted">{card.body}</p>
+              {card.note ? (
+                <p className="mt-2 border-l-2 border-embassy pl-3 text-xs leading-5 text-ink">{card.note}</p>
+              ) : null}
+              {card.items ? (
+                <ul className="mt-3 space-y-1 text-xs text-ink">
+                  {card.items.map((item) => (
+                    <li key={item}>→ {item}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {card.contacts ? (
+                <dl className="mt-3 space-y-2 text-xs">
+                  {card.contacts.map((item) => (
+                    <div key={item.label}>
+                      <dt className="text-muted">{item.label}</dt>
+                      <dd className="font-medium text-ink">
+                        {item.href ? (
+                          <a href={item.href} className="hover:text-embassy">
+                            {item.value}
+                          </a>
+                        ) : (
+                          item.value
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+            </article>
+          </GlowHover>
         ))}
       </div>
     </div>
