@@ -58,7 +58,7 @@ export function AboutTabs() {
       </div>
       <div key={tab} className="about-tab-content mt-3 flex min-h-0 flex-1 flex-col">
         <p className="line-clamp-2 text-sm leading-6 text-muted">{tabs[tab].body}</p>
-        <div className="mt-3 grid grid-cols-3 gap-2">
+        <div className="mt-6 grid grid-cols-3 gap-2">
           {tabs[tab].facts.map(([value, label]) => (
             <div key={label} className="rounded-2xl bg-sand/80 px-2.5 py-2.5">
               <p className="text-sm font-semibold">{value}</p>
