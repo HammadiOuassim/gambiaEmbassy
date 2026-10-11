@@ -10,7 +10,7 @@ const paragraphs = [
 
 export function AmbassadorMessage() {
   return (
-    <article className="flex h-full min-h-52 flex-col rounded-3xl border border-black/10 bg-white px-6 py-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] sm:px-8">
+    <article className="relative flex h-full min-h-52 flex-col rounded-3xl border border-black/10 bg-white px-6 py-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5 sm:px-8">
       <div>
         <h3 className="text-xl font-semibold text-ink">Ambassador&apos;s Welcome</h3>
       </div>

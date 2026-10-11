@@ -8,6 +8,7 @@ import { EmbassyCard } from "@/components/embassy-card";
 import { ConsularCardRow } from "@/components/consular-card-row";
 import { HighlightReel } from "@/components/highlight-reel";
 import { NewsReel } from "@/components/news-reel";
+import { GlowHover } from "@/components/glow-hover";
 const staff = [
   "Deputy Head of Mission",
   "Consular Officer",
@@ -196,12 +197,16 @@ export function HomePage() {
               citizens and partners in Qatar.
             </p>
             <div className="mt-6 grid items-start gap-5 md:h-[328px] md:grid-cols-[280px_1fr] md:items-stretch">
-              <div className="flex min-h-52 items-center justify-center rounded-3xl border border-black/10 bg-white p-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] md:h-full">
-                <span className="flex h-40 w-40 items-center justify-center rounded-full bg-[#d9d9d9] text-stone-800">
-                  <PersonIcon className="h-24 w-24" />
-                </span>
-              </div>
-              <AmbassadorMessage />
+              <GlowHover className="h-full min-h-52" glowClassName="rounded-[1.75rem]">
+                <div className="relative flex min-h-52 items-center justify-center rounded-3xl border border-black/10 bg-white p-6 shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5 md:h-full">
+                  <span className="flex h-40 w-40 items-center justify-center rounded-full bg-[#d9d9d9] text-stone-800">
+                    <PersonIcon className="h-24 w-24" />
+                  </span>
+                </div>
+              </GlowHover>
+              <GlowHover className="h-full min-h-52" glowClassName="rounded-[1.75rem]">
+                <AmbassadorMessage />
+              </GlowHover>
             </div>
             <div className="mt-8 flex items-end justify-between gap-4">
               <h2 className="text-xl font-semibold text-ink">Embassy Staff</h2>
@@ -209,16 +214,19 @@ export function HomePage() {
             </div>
             <div className="mt-5 grid grid-cols-2 justify-items-center gap-6 lg:grid-cols-[repeat(4,220px)] lg:justify-center">
               {staff.map((role) => (
-                <article
+                <GlowHover
                   key={role}
-                  className="flex h-[220px] w-full max-w-[220px] flex-col items-center justify-center rounded-2xl border border-black/10 bg-white px-3 py-6 text-center text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]"
+                  className="w-full max-w-[220px]"
+                  glowClassName="rounded-[1.4rem]"
                 >
-                  <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e4e4e4] text-stone-700">
-                    <PersonIcon className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
-                  <p className="mt-1 text-xs leading-5 text-muted">{role}</p>
-                </article>
+                  <article className="relative flex h-[220px] w-full flex-col items-center justify-center rounded-2xl border border-black/10 bg-white px-3 py-6 text-center text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                    <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e4e4e4] text-stone-700">
+                      <PersonIcon className="h-7 w-7" />
+                    </span>
+                    <h3 className="mt-4 text-sm font-semibold">Full Name</h3>
+                    <p className="mt-1 text-xs leading-5 text-muted">{role}</p>
+                  </article>
+                </GlowHover>
               ))}
             </div>
           </div>
@@ -250,12 +258,15 @@ export function HomePage() {
         <p className="text-sm text-ink/80">
           Unsure which service applies? Our consular team can help you choose the right route.
         </p>
-        <a
-          href="#location"
-          className="cursor-pointer rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg"
-        >
-          Contact Consular Desk
-        </a>      </div>
+        <GlowHover className="inline-flex shrink-0" glowClassName="rounded-full">
+          <a
+            href="#location"
+            className="relative cursor-pointer rounded-full bg-[#CE1126] px-4 py-2 text-sm font-medium text-white shadow-md transition-shadow duration-200 hover:shadow-lg"
+          >
+            Contact Consular Desk
+          </a>
+        </GlowHover>
+      </div>
 
       {/* Kept for later: full consular write-up below the cards.
       <div className="mt-8 border-t border-black/10 pt-8">
@@ -340,21 +351,25 @@ export function HomePage() {
 
 
         <section id="about" className="home-panel bg-[#f6f5f2] text-ink">
-          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-6 sm:px-6">
+          <div className="mx-auto flex h-full min-h-0 max-w-7xl flex-col px-4 py-5 sm:px-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-embassy-mid">
               THE EMBASSY
             </p>
-            <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 max-w-3xl text-2xl font-semibold tracking-tight sm:text-3xl">
               Know The Gambia, and the Embassy that serves it in Qatar
             </h2>
-            <p className="mt-3 max-w-2xl text-sm text-muted">
-              History, geography and government of the country, beside the vision, values and
-              mission of this Embassy: a trusted presence that keeps Gambians connected to home and
-              strengthens ties with the State of Qatar.
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+              History, geography and government beside this Embassy’s vision, values and mission in Qatar.
             </p>
-            <div className="mt-6 grid min-h-0 flex-1 gap-6 overflow-hidden sm:grid-cols-2">
-              <AboutTabs />
-              <EmbassyCard />
+            <div className="mt-5 flex min-h-0 flex-1 items-center">
+              <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2">
+                <GlowHover glowClassName="rounded-[1.75rem]">
+                  <AboutTabs />
+                </GlowHover>
+                <GlowHover glowClassName="rounded-[1.75rem]">
+                  <EmbassyCard />
+                </GlowHover>
+              </div>
             </div>
           </div>
         </section>
@@ -372,29 +387,31 @@ export function HomePage() {
       Practical resources for investors, businesses and travellers building meaningful
       connections with The Gambia.
     </p>
-    <div className="mt-6 grid min-h-0 flex-1 grid-cols-1 gap-5 md:grid-cols-3 lg:overflow-hidden">
-      <DiscoverCard
-        image="/card-trade.png"
-        kicker="TRADE & INVESTMENT"
-        title="Grow with one of West Africa’s most open economies"
-        body="Find sector intelligence and clear routes for responsible investment."
-        tags={["Key Economic Sectors", "Business Procedures", "Trade Opportunities", "Useful Contacts"]}
-      />
-      <DiscoverCard
-        image="/G tourism.avif"
-        kicker="TOURISM"
-        title="Experience the Smiling Coast of Africa"
-        body="Plan an unforgettable visit shaped by nature, heritage and generous hospitality."
-        tags={["Key Attractions", "Beaches", "Cultural Heritage", "Events & Festivals", "Travel & Accommodation Info"]}
-      />
-      <DiscoverCard
-        image="/G top dest.jpg"
-        kicker="TOP DESTINATION"
-        title="Follow the River Gambia from the coast inland"
-        body="The river that names the country is its defining journey, from the Atlantic shore through mangrove creeks to historic river towns."
-        tags={["River Gambia", "Kunta Kinteh Island", "Banjul", "Mangrove Creeks"]}
-        href="#about"
-      />
+    <div className="mt-6 flex min-h-0 flex-1 items-stretch md:items-center">
+      <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
+        <DiscoverCard
+          image="/card-trade.png"
+          kicker="TRADE & INVESTMENT"
+          title="West Africa’s open economy"
+          body="Sector intelligence and clear routes for responsible investment."
+          tags={["Sectors", "Trade"]}
+        />
+        <DiscoverCard
+          image="/G tourism.avif"
+          kicker="TOURISM"
+          title="The Smiling Coast of Africa"
+          body="Plan a visit shaped by nature, heritage and hospitality."
+          tags={["Beaches", "Heritage"]}
+        />
+        <DiscoverCard
+          image="/G top dest.jpg"
+          kicker="TOP DESTINATION"
+          title="Follow the River Gambia"
+          body="From the Atlantic shore through mangrove creeks to historic towns."
+          tags={["River Gambia", "Banjul"]}
+          href="#about"
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -508,27 +525,40 @@ function DiscoverCard({
   href?: string;
 }) {
   return (
-    <article className="overflow-hidden rounded-3xl border border-black/10 bg-white text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)]">
-      <Image src={image} alt="" width={406} height={220} className="h-48 w-full object-cover sm:h-56" />
-      <div className="p-4 sm:p-5">
-        <p className="text-xs font-semibold tracking-[0.14em] text-embassy-mid">{kicker}</p>
-        <h3 className="mt-2 text-lg font-semibold leading-snug sm:text-xl">{title}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-sand px-3 py-1 text-xs text-ink/80">
-              {tag}
-            </span>
-          ))}
+    <GlowHover className="h-full" glowClassName="rounded-[1.75rem]">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white text-ink shadow-[0_6px_14px_rgba(15,23,42,0.13)] transition-transform duration-300 group-hover:-translate-y-0.5">
+        <div className="relative h-44 overflow-hidden sm:h-48">
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+          <p className="absolute top-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] text-embassy-mid">
+            {kicker}
+          </p>
         </div>
-        <a
-          href={href}
-          className="mt-5 inline-flex rounded-full border border-black/10 px-4 py-2 text-sm"
-        >
-          Explore resources
-        </a>
-      </div>
-    </article>
+        <div className="flex flex-1 flex-col px-5 py-4">
+          <h3 className="text-lg font-semibold leading-snug tracking-tight">{title}</h3>
+          <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted">{body}</p>
+          <div className="mt-3 flex flex-nowrap gap-2 overflow-hidden">
+            {tags.slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className="shrink-0 rounded-full bg-sand px-2.5 py-1 text-xs whitespace-nowrap text-ink/80"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <a href={href} className="mt-auto pt-4 text-sm font-medium text-embassy">
+            Explore resources →
+          </a>
+        </div>
+      </article>
+    </GlowHover>
   );
 }
 
